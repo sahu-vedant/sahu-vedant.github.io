@@ -18,8 +18,8 @@ body {
 }
 
 h1 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* font-family: verdana; */
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    font-family: verdana;
     /* Beautiful font */
     color: #000000;
     /* Dark blue color */
