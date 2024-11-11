@@ -1,0 +1,106 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #538fe8;
+    /* Light blue background */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: calc(100vh - 12px);
+    /* Added gap from bottom */
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    text-align: center;
+    width: 100%;
+}
+
+h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Beautiful font */
+    color: #000000;
+    /* Dark blue color */
+    margin-bottom: 10px;
+    font-family: garamond;
+    font-size: 32px;
+    /* font-weight: ; */
+}
+
+h2 {
+    color: #2b3035;
+    margin-bottom: 20px;
+    font-family: verdana;
+    font-size: 20px;
+    font-weight: 100;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 12px;
+    /* 12px gap at the bottom */
+}
+
+.description-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Adding shadow */
+    padding-bottom: 3px;
+    /* 3px margin at the bottom */
+    border-radius: 10px;
+    /* Rounded corners */
+    background-color: #8fcff2;
+    /* White background for better visibility */
+}
+
+.description {
+    width: 100%;
+    /* font-family: brush script MT; */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: left;
+    /* Align text to the left */
+    padding-left: 20px;
+    /* Padding from left side */
+}
+
+.link {
+    display: inline-block;
+    padding: 10px 30px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 8px;
+    font-family: 'Courier New', Courier, monospace;
+    /* Rounded corners */
+    transition: background-color 0.3s ease;
+    overflow: hidden;
+    /* Hide overflow */
+    white-space: nowrap;
+    /* Prevent text wrap */
+    text-overflow: ellipsis;
+    /* Show ellipsis for overflowing text */
+    text-align: center;
+    /* Center the text */
+    border: 2px solid #007bff;
+    /* Border to make it look like a button */
+    margin-bottom: 1px;
+    /* 1px margin at the bottom */
+}
+
+.link:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    /* Change border color on hover */
+}
+
+.audio-container {
+    margin-top: 20px;
+}
