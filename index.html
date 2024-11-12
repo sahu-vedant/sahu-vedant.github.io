@@ -217,11 +217,18 @@
         </div>
     </div>
 
+    <!-- Audio element -->
+    <audio id="toggle-audio" src="https://dl.dropbox.com/scl/fi/ojg2baxgqic0dpl6dzonu/Main_Koi_Aisa_Geet_Gaoon_trim1-2.mp3?rlkey=47psp59vuupc9tmckwgsm28qh&st=gxw0znx5&dl=0"></audio>
+
     <script>
         function toggleTheme() {
             const body = document.body;
             body.classList.toggle("light-mode");
             body.classList.toggle("dark-mode");
+
+            // Play audio
+            const audio = document.getElementById("toggle-audio");
+            audio.play();
         }
     </script>
 </body>
