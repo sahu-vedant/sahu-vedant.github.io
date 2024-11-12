@@ -8,180 +8,180 @@
     <!-- <link rel="stylesheet" href="style.css"> -->
     <style>
         body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    height: calc(100vh - 12px);
-    margin: 0;
-    padding: 20px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: calc(100vh - 12px);
+            margin: 0;
+            padding: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
 
-body.light-mode {
-    background-color: #8bb4f1;
-    color: #000000;
-}
+        body.light-mode {
+            background-color: #8bb4f1;
+            color: #000000;
+        }
 
-body.dark-mode {
-    background-color: #2b2b2b;
-    color: #ffffff;
-}
+        body.dark-mode {
+            background-color: #2b2b2b;
+            color: #ffffff;
+        }
 
-.container {
-    text-align: center;
-    width: 100%;
-}
+        .container {
+            text-align: center;
+            width: 100%;
+        }
 
-h1 {
-    font-family: verdana;
-    margin-bottom: 10px;
-    font-size: 32px;
-}
+        h1 {
+            font-family: verdana;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
 
-h2 {
-    font-family: verdana;
-    margin-bottom: 20px;
-    font-size: 20px;
-    font-weight: 100;
-}
+        h2 {
+            font-family: verdana;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: 100;
+        }
 
-.links {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 100%;
-    align-items: center;
-    margin-bottom: 12px;
-}
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            align-items: center;
+            margin-bottom: 12px;
+        }
 
-.description-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding-bottom: 3px;
-    border-radius: 10px;
-}
+        .description-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding-bottom: 3px;
+            border-radius: 10px;
+        }
 
-.description {
-    width: 100%;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    text-align: left;
-    padding-left: 20px;
-}
+        .description {
+            width: 100%;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            text-align: left;
+            padding-left: 20px;
+        }
 
-.light-mode .description-container {
-    background-color: #8fcff2;
-    color: #000000;
-}
+        .light-mode .description-container {
+            background-color: #8fcff2;
+            color: #000000;
+        }
 
-.dark-mode .description-container {
-    background-color: #444444;
-    color: #ffffff;
-}
+        .dark-mode .description-container {
+            background-color: #444444;
+            color: #ffffff;
+        }
 
-.link {
-    display: inline-block;
-    padding: 10px 30px;
-    text-decoration: none;
-    color: #fff;
-    background-color: #007bff;
-    border-radius: 8px;
-    font-family: 'Courier New', Courier, monospace;
-    transition: background-color 0.3s ease;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    text-align: center;
-    border: 2px solid #007bff;
-    margin-bottom: 1px;
-}
+        .link {
+            display: inline-block;
+            padding: 10px 30px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            transition: background-color 0.3s ease;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            text-align: center;
+            border: 2px solid #007bff;
+            margin-bottom: 1px;
+        }
 
-.link:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
-}
+        .link:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
 
-.theme-toggle {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 42px;
-    height: 24px;
-}
+        .theme-toggle {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 42px;
+            height: 24px;
+        }
 
-.theme-toggle input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
+        .theme-toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
 
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #333;
-    /* Darker in light mode */
-    transition: .4s;
-    border-radius: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 10px;
-    font-weight: bold;
-}
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #333;
+            /* Darker in light mode */
+            transition: .4s;
+            border-radius: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+        }
 
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 18px;
-    width: 18px;
-    left: 3px;
-    bottom: 3px;
-    background-color: #A9A9A9;
-    /* Updated color */
-    transition: .4s;
-    border-radius: 50%;
-    color: black;
-}
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: #A9A9A9;
+            /* Updated color */
+            transition: .4s;
+            border-radius: 50%;
+            color: black;
+        }
 
-input:checked+.slider {
-    background-color: #ddd;
-    /* Lighter in dark mode */
-}
+        input:checked+.slider {
+            background-color: #ddd;
+            /* Lighter in dark mode */
+        }
 
-input:checked+.slider:before {
-    transform: translateX(18px);
-}
+        input:checked+.slider:before {
+            transform: translateX(18px);
+        }
 
-.slider-content {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    /* Prevent interaction with the text */
-    color: #ffffff;
-    /* Light mode */
-}
+        .slider-content {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            /* Prevent interaction with the text */
+            color: #ffffff;
+            /* Light mode */
+        }
 
-body.dark-mode .slider-content {
-    color: #000000;
-    /* Dark mode */
-}
+        body.dark-mode .slider-content {
+            color: #000000;
+            /* Dark mode */
+        }
 
-.theme-toggle-container {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
+        .theme-toggle-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
     </style>
 </head>
 
@@ -219,10 +219,10 @@ body.dark-mode .slider-content {
 
     <script>
         function toggleTheme() {
-    const body = document.body;
-    body.classList.toggle("light-mode");
-    body.classList.toggle("dark-mode");
-}
+            const body = document.body;
+            body.classList.toggle("light-mode");
+            body.classList.toggle("dark-mode");
+        }
     </script>
 </body>
 
