@@ -336,7 +336,8 @@
             </div>
             <div class="description-container">
                 <p class="description">to print Pyramidical Star Pattern :</p>
-                <a href="https://github.com/sahu-vedant/Pyramidical-Star-Pattern/blob/main/pyramidical-star-pattern.c" class="link">Click for Code</a>
+                <a href="https://github.com/sahu-vedant/Pyramidical-Star-Pattern/blob/main/pyramidical-star-pattern.c"
+                    class="link">Click for Code</a>
             </div>
             <!-- <p>© Copyright all rights reserved 2024</p> -->
         </div>
@@ -414,6 +415,14 @@
         const toggleWeather = () => {
             isSnowing = !isSnowing;
         };
+
+        const audio = document.getElementById('toggle-audio');
+
+        audio.addEventListener('ended', function () {
+            this.currentTime = 0;
+            this.play();
+        });
+
 
     </script>
 </body>
