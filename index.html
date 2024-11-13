@@ -182,6 +182,38 @@
             top: 10px;
             right: 10px;
         }
+
+        .social-buttons {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-button {
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            border-radius: 5px;
+            background-color: transparent;
+            border: none;
+            text-decoration: none;
+            color: #000000;
+            transition: background-color 0.3s ease;
+            width: 20px;
+            height: 20px;
+            justify-content: center;
+        }
+
+        .social-button:hover {
+            background-color: transparent;
+        }
+
+        .social-button img {
+            width: 20px;
+            height: 20px;
+        }
     </style>
 </head>
 
@@ -214,11 +246,28 @@
                 <p class="description">to find Factorial :</p>
                 <a href="https://github.com/sahu-vedant/Factorial/blob/main/factorial.c" class="link">Click for Code</a>
             </div>
+            <!-- <p>© Copyright all rights reserved 2024</p> -->
         </div>
     </div>
 
     <!-- Audio element -->
-    <audio id="toggle-audio" src="https://dl.dropbox.com/scl/fi/ojg2baxgqic0dpl6dzonu/Main_Koi_Aisa_Geet_Gaoon_trim1-2.mp3?rlkey=47psp59vuupc9tmckwgsm28qh&st=gxw0znx5&dl=0"></audio>
+    <audio id="toggle-audio"
+        src="https://dl.dropbox.com/scl/fi/ojg2baxgqic0dpl6dzonu/Main_Koi_Aisa_Geet_Gaoon_trim1-2.mp3?rlkey=47psp59vuupc9tmckwgsm28qh&st=gxw0znx5&dl=0"></audio>
+
+    <!-- Social Media Buttons -->
+    <div class="social-buttons">
+        <a href="https://www.instagram.com/_vedant.sahu" class="social-button" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo">
+        </a>
+        <a href="https://wa.me/+916261130495" class="social-button" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo">
+
+            <a href="https://github.com/sahu-vedant" class="social-button" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub Logo">
+            </a>
+            
+        </a>
+    </div>
 
     <script>
         function toggleTheme() {
