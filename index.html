@@ -5,296 +5,292 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vedant's Code Hub</title>
-    <!-- <link rel="stylesheet" href="style.css"> -->
-    <style>
+    <!-- <link rel="stylesheet" href="style1.css"> -->
+     <style>
         body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            height: calc(100vh - 12px);
-            margin: 0;
-            padding: 20px;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh; /* Ensure body height is at least the viewport height */
+    margin: 0;
+    padding: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+    overflow-y: auto; /* Ensure vertical scrolling */
+}
 
-        body.light-mode {
-            background-color: #9ec5ff;
-            color: #000000;
-        }
+body.light-mode {
+    background-color: #9ec5ff;
+    color: #000000;
+}
 
-        body.dark-mode {
-            background-color: #2b2b2b;
-            color: #ffffff;
-        }
-        }
+body.dark-mode {
+    background-color: #2b2b2b;
+    color: #ffffff;
+}
 
-        .container {
-            text-align: center;
-            width: 100%;
-        }
+.container {
+    text-align: center;
+    width: 100%;
+}
 
-        h1 {
-            font-family: verdana;
-            margin-bottom: 10px;
-            font-size: 32px;
-        }
+h1 {
+    font-family: Verdana, sans-serif;
+    margin-bottom: 10px;
+    font-size: 32px;
+}
 
-        h2 {
-            font-family: verdana;
-            margin-bottom: 20px;
-            font-size: 20px;
-            font-weight: 100;
-        }
+h2 {
+    font-family: Verdana, sans-serif;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 100;
+}
 
-        .links {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            width: 100%;
-            align-items: center;
-            margin-bottom: 12px;
-        }
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 12px;
+}
 
-        .description-container {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding-bottom: 3px;
-            border-radius: 10px;
-        }
+.description-container {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+}
 
-        .description {
-            width: 100%;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            text-align: left;
-            padding-left: 20px;
-        }
+.description {
+    width: 100%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: left;
+    padding-left: 20px;
+}
 
-        .light-mode .description-container {
-            background-color: #c6ccf5;
-            color: #000000;
-        }
+.light-mode .description-container {
+    background-color: #c6ccf5;
+    color: #000000;
+}
 
-        .dark-mode .description-container {
-            background-color: #444444;
-            color: #ffffff;
-        }
+.dark-mode .description-container {
+    background-color: #444444;
+    color: #ffffff;
+}
 
+.link {
+    display: inline-block;
+    padding: 10px 30px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #035bfe;
+    border-radius: 8px;
+    font-family: 'Courier New', Courier, monospace;
+    transition: background-color 0.3s ease;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
+    border: 2px solid #035bfe;
+    margin-bottom: 1px;
+}
 
-        .link {
-            display: inline-block;
-            padding: 10px 30px;
-            text-decoration: none;
-            color: #fff;
-            background-color: #035bfe;
-            border-radius: 8px;
-            font-family: 'Courier New', Courier, monospace;
-            transition: background-color 0.3s ease;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            text-align: center;
-            border: 2px solid #035bfe;
-            margin-bottom: 1px;
-        }
+.link:hover {
+    background-color: #0008ff;
+    border-color: #0008ff;
+}
+.theme-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 42px;
+    height: 24px;
+}
 
-        .link:hover {
-            background-color: #0008ff;
-            border-color: #0008ff;
-        }
+.theme-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
 
-        .theme-toggle {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 42px;
-            height: 24px;
-        }
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #333;
+    transition: .4s;
+    border-radius: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+}
 
-        .theme-toggle input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: #A9A9A9;
+    transition: .4s;
+    border-radius: 50%;
+    color: black;
+}
 
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #333;
-            transition: .4s;
-            border-radius: 24px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 10px;
-            font-weight: bold;
-        }
+input:checked+.slider {
+    background-color: #ddd;
+}
 
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 18px;
-            width: 18px;
-            left: 3px;
-            bottom: 3px;
-            background-color: #A9A9A9;
-            transition: .4s;
-            border-radius: 50%;
-            color: black;
-        }
+input:checked+.slider:before {
+    transform: translateX(18px);
+}
 
-        input:checked+.slider {
-            background-color: #ddd;
-        }
+.slider-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    color: #ffffff;
+}
 
-        input:checked+.slider:before {
-            transform: translateX(18px);
-        }
+body.dark-mode .slider-content {
+    color: #000000;
+}
 
-        .slider-content {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            color: #ffffff;
-        }
+.weather-toggle-container {
+    position: absolute;
+    top: 10px;
+    right: 60px;
+    width: 42px;
+    height: 24px;
+}
 
-        body.dark-mode .slider-content {
-            color: #000000;
-        }
+.weather-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
 
-        .weather-toggle-container {
-            position: absolute;
-            top: 10px;
-            right: 60px;
-            /* Adjust position relative to the existing toggle */
-            width: 42px;
-            height: 24px;
-        }
+.weather-toggle .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #333;
+    transition: .4s;
+    border-radius: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+}
 
-        .weather-toggle input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
+.weather-toggle .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: #A9A9A9;
+    transition: .4s;
+    border-radius: 50%;
+    color: black;
+}
 
-        .weather-toggle .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #333;
-            transition: .4s;
-            border-radius: 24px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 10px;
-            font-weight: bold;
-        }
+.weather-toggle input:checked+.slider {
+    background-color: #ddd;
+}
 
-        .weather-toggle .slider:before {
-            position: absolute;
-            content: "";
-            height: 18px;
-            width: 18px;
-            left: 3px;
-            bottom: 3px;
-            background-color: #A9A9A9;
-            transition: .4s;
-            border-radius: 50%;
-            color: black;
-        }
+.weather-toggle input:checked+.slider:before {
+    transform: translateX(18px);
+}
 
-        .weather-toggle input:checked+.slider {
-            background-color: #ddd;
-        }
+.weather-toggle .slider-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    color: #ffffff;
+}
 
-        .weather-toggle input:checked+.slider:before {
-            transform: translateX(18px);
-        }
+body.dark-mode .weather-toggle .slider-content {
+    color: #000000;
+}
 
-        .weather-toggle .slider-content {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            color: #ffffff;
-        }
+.social-buttons {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    display: flex;
+    gap: 12px;
+    padding: 10px;
+    z-index: 1000; /* Ensure they are above other elements */
+}
 
-        body.dark-mode .weather-toggle .slider-content {
-            color: #000000;
-        }
+.social-button {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: transparent;
+    border: none;
+    text-decoration: none;
+    color: #000000;
+    transition: background-color 0.3s ease;
+    justify-content: center;
+}
 
-        .social-buttons {
-            position: fixed;
-            bottom: 0;
-            left: 10px;
-            display: flex;
-            gap: 12px;
-            margin-bottom: 10px;
-        }
+.social-button:hover {
+    background-color: transparent;
+}
 
-        .social-button {
-            display: flex;
-            align-items: center;
-            padding: 5px;
-            border-radius: 5px;
-            background-color: transparent;
-            border: none;
-            text-decoration: none;
-            color: #000000;
-            transition: background-color 0.3s ease;
-            width: 20px;
-            height: 20px;
-            justify-content: center;
-        }
+.social-button img {
+    width: 20px;
+    height: 20px;
+}
 
-        .social-button:hover {
-            background-color: transparent;
-        }
+.snowflake {
+    position: fixed;
+    top: -10px;
+    color: white;
+    font-size: 1em;
+    user-select: none;
+    pointer-events: none;
+    animation: fall linear infinite;
+}
 
-        .social-button img {
-            width: 20px;
-            height: 20px;
-        }
+@keyframes fall {
+    0% {
+        top: -10px;
+    }
 
-        .snowflake {
-            position: fixed;
-            top: -10px;
-            color: white;
-            font-size: 1em;
-            user-select: none;
-            pointer-events: none;
-            animation: fall linear infinite;
-        }
+    100% {
+        top: 100vh;
+    }
+}
 
-        @keyframes fall {
-            0% {
-                top: -10px;
-            }
-
-            100% {
-                top: 100vh;
-            }
-        }
-    </style>
+     </style>
 </head>
 
 <body class="light-mode">
@@ -322,13 +318,11 @@
         <div class="links">
             <div class="description-container">
                 <p class="description">Sum of Digits :</p>
-                <a href="https://github.com/sahu-vedant/Sum-of-Digits-of-a-Number/blob/main/sum-of-digits.c"
-                    class="link">Click for Code</a>
+                <a href="https://github.com/sahu-vedant/Sum-of-Digits-of-a-Number/blob/main/sum-of-digits.c" class="link">Click for Code</a>
             </div>
             <div class="description-container">
                 <p class="description">to check Prime Number :</p>
-                <a href="https://github.com/sahu-vedant/Prime-Number/blob/main/prime-number.c" class="link">Click for
-                    Code</a>
+                <a href="https://github.com/sahu-vedant/Prime-Number/blob/main/prime-number.c" class="link">Click for Code</a>
             </div>
             <div class="description-container">
                 <p class="description">to find Factorial :</p>
@@ -336,19 +330,16 @@
             </div>
             <div class="description-container">
                 <p class="description">to print Pyramidical Star Pattern :</p>
-                <a href="https://github.com/sahu-vedant/Pyramidical-Star-Pattern/blob/main/pyramidical-star-pattern.c"
-                    class="link">Click for Code</a>
+                <a href="https://github.com/sahu-vedant/Pyramidical-Star-Pattern/blob/main/pyramidical-star-pattern.c" class="link">Click for Code</a>
             </div>
-            <!-- <p>© Copyright all rights reserved 2024</p> -->
         </div>
     </div>
 
     <!-- Audio element -->
-    <audio id="toggle-audio"
-        src="https://dl.dropbox.com/scl/fi/h3ld0fhivs0ikyoegawzj/Tere_Mast_Mast_Do_Nain_1.mp3?rlkey=8k20dgo11sf5gtohjvcjbfs9y&st=y3sjdmr2&dl=0"></audio>
+    <audio id="toggle-audio" src="https://dl.dropbox.com/scl/fi/h3ld0fhivs0ikyoegawzj/Tere_Mast_Mast_Do_Nain_1.mp3?rlkey=8k20dgo11sf5gtohjvcjbfs9y&st=y3sjdmr2&dl=0"></audio>
 
     <!-- Social Media Buttons -->
-    <div class="social-buttons">
+    <div class="social-buttons" id="socialButtons">
         <a href="https://www.instagram.com/_vedant.sahu" class="social-button" target="_blank">
             <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo">
         </a>
@@ -364,65 +355,64 @@
     <script>
         let isSnowing = true;
 
-        const createSnowflake = () => {
-            const snowflake = document.createElement('div');
-            snowflake.classList.add('snowflake');
-            snowflake.textContent = '❄️';
-            snowflake.style.left = `${Math.random() * window.innerWidth}px`;
-            snowflake.style.animationDuration = `${Math.random() * 3 + 2}s`;
-            snowflake.style.fontSize = `${Math.random() * 10 + 10}px`;
+const createSnowflake = () => {
+    const snowflake = document.createElement('div');
+    snowflake.classList.add('snowflake');
+    snowflake.textContent = '❄️';
+    snowflake.style.left = `${Math.random() * window.innerWidth}px`;
+    snowflake.style.animationDuration = `${Math.random() * 3 + 2}s`;
+    snowflake.style.fontSize = `${Math.random() * 10 + 10}px`;
 
-            document.body.appendChild(snowflake);
+    document.body.appendChild(snowflake);
 
-            setTimeout(() => {
-                snowflake.remove();
-            }, 5000);
-        };
+    setTimeout(() => {
+        snowflake.remove();
+    }, 5000);
+};
 
-        const createRaindrop = () => {
-            const raindrop = document.createElement('div');
-            raindrop.classList.add('snowflake'); // Reusing snowflake class for raindrops
-            raindrop.textContent = '💧';
-            raindrop.style.left = `${Math.random() * window.innerWidth}px`;
-            raindrop.style.animationDuration = `${Math.random() * 3 + 2}s`;
-            raindrop.style.fontSize = `${Math.random() * 10 + 10}px`;
+const createRaindrop = () => {
+    const raindrop = document.createElement('div');
+    raindrop.classList.add('snowflake'); // Reusing snowflake class for raindrops
+    raindrop.textContent = '💧';
+    raindrop.style.left = `${Math.random() * window.innerWidth}px`;
+    raindrop.style.animationDuration = `${Math.random() * 3 + 2}s`;
+    raindrop.style.fontSize = `${Math.random() * 10 + 10}px`;
 
-            document.body.appendChild(raindrop);
+    document.body.appendChild(raindrop);
 
-            setTimeout(() => {
-                raindrop.remove();
-            }, 5000);
-        };
+    setTimeout(() => {
+        raindrop.remove();
+    }, 5000);
+};
 
-        setInterval(() => {
-            if (isSnowing) {
-                createSnowflake();
-            } else {
-                createRaindrop();
-            }
-        }, 100);
+setInterval(() => {
+    if (isSnowing) {
+        createSnowflake();
+    } else {
+        createRaindrop();
+    }
+}, 100);
 
-        const toggleTheme = () => {
-            const body = document.body;
-            body.classList.toggle("light-mode");
-            body.classList.toggle("dark-mode");
+const toggleTheme = () => {
+    const body = document.body;
+    body.classList.toggle("light-mode");
+    body.classList.toggle("dark-mode");
 
-            // Play audio
-            const audio = document.getElementById("toggle-audio");
-            audio.play();
-        };
+    // Play audio
+    const audio = document.getElementById("toggle-audio");
+    audio.play();
+};
 
-        const toggleWeather = () => {
-            isSnowing = !isSnowing;
-        };
+const toggleWeather = () => {
+    isSnowing = !isSnowing;
+};
 
-        const audio = document.getElementById('toggle-audio');
+const audio = document.getElementById('toggle-audio');
 
-        audio.addEventListener('ended', function () {
-            this.currentTime = 0;
-            this.play();
-        });
-
+audio.addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play();
+});
 
     </script>
 </body>
