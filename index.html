@@ -382,7 +382,8 @@
     <!-- <script src="script.js"></script> -->
     <script>
         let isSnowing = true;
-
+        let isPlaying = false;
+    
         const createSnowflake = () => {
             const snowflake = document.createElement('div');
             snowflake.classList.add('snowflake');
@@ -390,14 +391,14 @@
             snowflake.style.left = `${Math.random() * window.innerWidth}px`;
             snowflake.style.animationDuration = `${Math.random() * 3 + 2}s`;
             snowflake.style.fontSize = `${Math.random() * 10 + 10}px`;
-
+    
             document.body.appendChild(snowflake);
-
+    
             setTimeout(() => {
                 snowflake.remove();
             }, 5000);
         };
-
+    
         const createRaindrop = () => {
             const raindrop = document.createElement('div');
             raindrop.classList.add('snowflake'); // Reusing snowflake class for raindrops
@@ -405,14 +406,14 @@
             raindrop.style.left = `${Math.random() * window.innerWidth}px`;
             raindrop.style.animationDuration = `${Math.random() * 3 + 2}s`;
             raindrop.style.fontSize = `${Math.random() * 10 + 10}px`;
-
+    
             document.body.appendChild(raindrop);
-
+    
             setTimeout(() => {
                 raindrop.remove();
             }, 5000);
         };
-
+    
         setInterval(() => {
             if (isSnowing) {
                 createSnowflake();
@@ -420,29 +421,38 @@
                 createRaindrop();
             }
         }, 100);
-
+    
         const toggleTheme = () => {
             const body = document.body;
             body.classList.toggle("light-mode");
             body.classList.toggle("dark-mode");
-
-            // Play audio
+    
+            // Play or pause audio
             const audio = document.getElementById("toggle-audio");
-            audio.play();
+            if (isPlaying) {
+                audio.pause();
+                audio.currentTime = 0; // Reset the audio to the beginning
+            } else {
+                audio.play();
+            }
+            isPlaying = !isPlaying;
         };
-
+    
         const toggleWeather = () => {
             isSnowing = !isSnowing;
         };
-
+    
         const audio = document.getElementById('toggle-audio');
-
+    
         audio.addEventListener('ended', function () {
-            this.currentTime = 0;
-            this.play();
+            // Only loop if the audio is supposed to be playing
+            if (isPlaying) {
+                this.currentTime = 0;
+                this.play();
+            }
         });
-
     </script>
+    
 </body>
 
 </html>
