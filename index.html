@@ -297,12 +297,23 @@
       letter-spacing: 2px;
       word-spacing: 10px;
     }
-    .last {
+
+    .end {
+      position: fixed;
+      width: 80px;
+      height: 12px;
+      background-color: red;
+      bottom: 0;
+      left: 0;
+    }
+
+    .end h6 {
+      /* position: absolute; */
       font-size: x-small;
       color: black;
-      position: absolute;
-      bottom: 0;
-      left: 0;;
+      /* bottom: 0;
+      left: 0; */
+      /* margin: 0; */
     }
   </style>
 </head>
@@ -387,8 +398,10 @@
     src="https://dl.dropboxusercontent.com/scl/fi/ykqzm6l3iov3yxe325xll/Tu-Chahiye-Rohit-Sharma.mp3?rlkey=p3mh70aoz67tokr9deglh4mmn&st=nyzpo6cu&dl=0"
     controls></audio>
 
-  <h6 class="last"> © Vedant Sahu </h6>
+  <div class="end">
+    <h6 class="last"> © Vedant Sahu </h6>
 
+  </div>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <!-- partial -->
