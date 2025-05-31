@@ -1,436 +1,870 @@
-<!-- creator - VEDANT SAHU -->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=0.85">
-  <title>Rohit Sharma</title>
-  <style>
-    * {
-      font-family: 'Courier New', Courier, monospace;
-      font-weight: bold;
-      font-size: 20px;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Finsweet Blog - Home</title>
+<style>
+  /* Base and Reset */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    line-height: 1.6;
+    color: #222;
+    background: #fff;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  a:hover, button:hover {
+    opacity: 0.85;
+  }
+  img {
+    max-width: 100%;
+    display: block;
+  }
+  h1,h2,h3,h4,h5 {
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: #111;
+  }
+  p {
+    margin-bottom: 1rem;
+    color: #444;
+  }
+  /* Utility Classes */
+  .text-center{text-align: center;}
+  .bold {font-weight: 700;}
+  .mb-10 {margin-bottom: 2.5rem;}
+  .mb-6 {margin-bottom: 1.5rem;}
+  .mb-4 {margin-bottom: 1rem;}
+  .mb-2 {margin-bottom: 0.5rem;}
+  .btn {
+    border: none;
+    cursor: pointer;
+    padding: 12px 28px;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+  }
 
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+  /* Colors */
+  :root {
+    --yellow: #ffd600;
+    --black: #121212;
+    --white: #fff;
+    --lightgray: #f9f9f9;
+    --purple-light: #e7e0ff;
+    --purple-dark: #6059e9;
+    --gray-text: #555;
+  }
+
+  /* Header */
+  header.header {
+    position: sticky;
+    top: 0;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 3rem;
+    box-shadow: 0 2px 7px rgb(0 0 0 / 0.1);
+    z-index: 1000;
+    background: #0f172a;
+  }
+  header .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--black);
+  }
+  nav.nav {
+    display: flex;
+    align-items: center;
+  }
+  nav.nav a {
+    margin: 0 1rem;
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--black);
+    position: relative;
+  }
+  nav.nav a::after {
+    content: '';
+    display: block;
+    width: 0%;
+    height: 2px;
+    background: var(--yellow);
+    transition: width 0.3s ease;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+  }
+  nav.nav a:hover::after {
+    width: 100%;
+  }
+  button.subscribe-btn {
+    margin-left: 1.5rem;
+    background-color: var(--yellow);
+    color: var(--black);
+    font-weight: 700;
+    border-radius: 6px;
+    padding: 0.6rem 1.6rem;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  button.subscribe-btn:hover {
+    background-color: #ffec3d;
+  }
+
+  /* Hero Section */
+  section.hero {
+    position: relative;
+    background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1470&q=80');
+    background-size: cover;
+    background-position: center center;
+    min-height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1.5rem;
+  }
+  section.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 0;
+  }
+  section.hero .hero-content {
+    z-index: 1;
+    max-width: 780px;
+    text-align: center;
+    color: var(--white);
+  }
+  section.hero h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  section.hero p {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    max-width: 460px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 400;
+    color: #eee;
+  }
+  button.get-started-btn {
+    background: var(--yellow);
+    color: var(--black);
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 0.75rem 2rem;
+    border-radius: 6px;
+    border: none;
+    box-shadow: 0 8px 15px rgb(255 214 0 / 0.4);
+    transition: all 0.3s ease;
+  }
+  button.get-started-btn:hover {
+    background: #ffec3d;
+    box-shadow: 0 12px 24px rgb(255 214 0 / 0.6);
+  }
+
+  /* Featured Posts + Latest Articles */
+  section.featured-posts {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 3rem auto 2rem;
+    padding: 0 1.5rem;
+  }
+  .featured-post {
+    display: flex;
+    flex-direction: column;
+  }
+  .featured-post img {
+    border-radius: 6px;
+    object-fit: cover;
+    height: 300px;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .featured-post h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+  .featured-post p {
+    flex-grow: 1;
+    font-size: 1rem;
+    color: var(--gray-text);
+  }
+  button.read-more-btn {
+    align-self: flex-start;
+    margin-top: 1rem;
+    background: var(--yellow);
+    color: var(--black);
+    font-weight: 700;
+    border-radius: 6px;
+    border: none;
+    padding: 0.6rem 1.6rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  button.read-more-btn:hover {
+    background-color: #ffec3d;
+  }
+
+  .latest-articles {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .latest-articles h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .latest-articles article h4 {
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin-bottom: 0.3rem;
+    color: var(--black);
+  }
+  .latest-articles article p {
+    font-size: 0.875rem;
+    color: var(--gray-text);
+    line-height: 1.3;
+  }
+
+  /* Quote Box */
+  .quote-box {
+    background: var(--purple-light);
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgb(96 89 233 / 0.15);
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--purple-dark);
+  }
+
+  /* Categories */
+  section.categories {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center; /* Changed from space-between */
+    gap: 1.5rem; /* Added gap for spacing between cards */
+    padding: 3rem 1.5rem;
+  }
+  .category-card {
+    flex: 1 1 0;
+    max-width: 260px; /* Optional max width for consistent size */
+    background: #fff;
+    border: 1.8px solid #ddd;
+    border-radius: 8px;
+    padding: 1.8rem 1.5rem;
+    text-align: center;
+    cursor: default;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .category-card:hover {
+    box-shadow: 0 10px 25px rgb(0 0 0 / 0.12);
+  }
+  .category-card.highlighted {
+    border-color: var(--yellow);
+    background-color: var(--yellow);
+    color: var(--black);
+  }
+  .category-card.highlighted:hover {
+    filter: brightness(1.1);
+  }
+  .category-icon {
+    width: 48px;
+    height: 48px;
+    fill: var(--purple-dark);
+  }
+  .category-card.highlighted .category-icon {
+    fill: var(--black);
+  }
+  .category-card h4 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
+  .category-card p {
+    font-size: 0.9rem;
+    color: inherit;
+  }
+
+  /* Latest Blog Post Banner */
+  section.latest-blog-post {
+    max-width: 1200px;
+    margin: 3rem auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    background-color: var(--yellow);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 45px rgb(255 214 0 / 0.4);
+  }
+  section.latest-blog-post img {
+    width: 100%;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    height: 100%;
+  }
+  .latest-post-content {
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .latest-post-content h2 {
+    font-weight: 800;
+    font-size: 2rem;
+    margin-bottom: 1.25rem;
+    color: var(--black);
+  }
+  .latest-post-content button.read-more-btn {
+    background: var(--white);
+    color: var(--yellow);
+    box-shadow: none;
+  }
+  .latest-post-content button.read-more-btn:hover {
+    background-color: #FFF390;
+  }
+
+  /* Authors */
+  section.authors {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 1.5rem 3rem 1.5rem;
+    text-align: center;
+  }
+  section.authors h3 {
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 2.5rem;
+    color: var(--black);
+  }
+  .author-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 2rem;
+  }
+  .author-card {
+    background: var(--lightgray);
+    padding: 1.8rem 1rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgb(0 0 0 / 0.05);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    cursor: default;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .author-card:hover {
+    box-shadow: 0 12px 34px rgb(0 0 0 / 0.15);
+    transform: translateY(-5px);
+  }
+  .author-card img {
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    margin-bottom: 0.75rem;
+  }
+  .author-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    color: var(--black);
+  }
+  .social-icons {
+    display: flex;
+    gap: 1rem;
+  }
+  .social-icons a {
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
+    fill: #777;
+    transition: fill 0.3s ease;
+  }
+  .social-icons a svg {
+    width: 22px;
+    height: 22px;
+    display: block;
+  }
+  .social-icons a:hover {
+    fill: var(--yellow);
+  }
+
+  /* Call to Action */
+  section.call-to-action {
+    background: var(--lightgray);
+    text-align: center;
+    padding: 3.5rem 1.5rem;
+    margin-top: 2rem;
+  }
+  section.call-to-action h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.8rem;
+    color: var(--black);
+  }
+  button.join-now-btn {
+    background: var(--yellow);
+    color: var(--black);
+    font-weight: 700;
+    padding: 1rem 3rem;
+    border-radius: 8px;
+    border: none;
+    font-size: 1.15rem;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgb(255 214 0 / 0.35);
+    transition: background-color 0.3s ease;
+  }
+  button.join-now-btn:hover {
+    background-color: #fff34a;
+  }
+
+  /* Footer */
+  footer.footer {
+    background: var(--black);
+    color: var(--white);
+    padding: 2rem 3rem 3rem 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+  footer .footer-left,
+  footer .footer-right {
+    flex: 1 1 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  footer .footer-left .logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--yellow);
+  }
+  footer .footer-left p {
+    font-size: 0.95rem;
+    color: #dcdcdc;
+  }
+  footer .footer-right {
+    align-items: flex-start;
+  }
+  footer input[type="email"] {
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    border: none;
+    font-size: 1rem;
+    flex-grow: 1;
+    margin-bottom: 0.7rem;
+  }
+  footer .subscribe-btn {
+    width: 140px;
+    align-self: flex-start;
+    background: var(--yellow);
+    color: var(--black);
+    font-weight: 700;
+    border-radius: 6px;
+    padding: 0.6rem 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  footer .subscribe-btn:hover {
+    background-color: #ffec3d;
+  }
+  footer .footer-nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+  footer .footer-nav a {
+    color: var(--white);
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+  }
+  footer .footer-nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0%;
+    height: 2px;
+    background: var(--yellow);
+    transition: width 0.3s ease;
+  }
+  footer .footer-nav a:hover::after {
+    width: 100%;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    section.featured-posts {
+      grid-template-columns: 1fr;
     }
-
-    body {
-      background-color: lightsteelblue;
-      min-height: 100vh;
-      display: flex;
+    section.latest-blog-post {
+      grid-template-columns: 1fr;
+      border-radius: 0;
+    }
+    section.latest-blog-post img {
+      border-radius: 0;
+      height: 280px;
+      width: 100%;
+    }
+    .latest-post-content {
+      padding: 1.5rem 1rem 2rem;
+    }
+    section.categories {
       flex-direction: column;
-      align-items: center;
-      overflow-x: hidden;
-      overflow-y: auto;
-      padding-bottom: 100px;
+      gap: 2rem;
+      justify-content: center; /* keep center for stacking */
     }
-
-
-    main {
-      position: relative;
-      z-index: 1;
-      width: 98%;
-      min-height: 650px;
-      margin: 2rem 0;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+    .category-card {
+      margin: 0 auto;
+      max-width: 320px;
     }
-
-    /* horizontal movement in mobile fixed by below */
-    html,
-    body {
-      max-width: 100%;
-      overflow-x: hidden;
+    .author-grid {
+      grid-template-columns: repeat(2,1fr);
+      gap: 1.5rem;
     }
-
-
-    .item {
-      width: 200px;
-      height: 300px;
-      list-style-type: none;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 1;
-      background-position: center;
-      background-size: cover;
-      border-radius: 20px;
-      box-shadow: 0 20px 30px rgba(255, 255, 255, 0.3) inset;
-      transition: transform 0.1s, left 0.75s, top 0.75s, width 0.75s, height 0.75s;
-
-      &:nth-child(1),
-      &:nth-child(2) {
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        transform: none;
-        border-radius: 0;
-        box-shadow: none;
-        opacity: 1;
-      }
-
-      &:nth-child(3) {
-        left: 50%;
-      }
-
-      &:nth-child(4) {
-        left: calc(50% + 220px);
-      }
-
-      &:nth-child(5) {
-        left: calc(50% + 440px);
-      }
-
-      &:nth-child(6) {
-        left: calc(50% + 660px);
-        opacity: 0;
-      }
+  }
+  @media (max-width: 480px) {
+    header.header {
+      padding: 1rem 1.3rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
     }
-
-    .content {
-      width: min(40vw, 400px);
-      position: absolute;
-      top: 45%;
-      left: 1rem;
-      transform: translateY(-50%);
-      font: 400 0.85rem helvetica, sans-serif;
-      color: rgb(255, 255, 255);
-      background: rgba(0, 0, 0, 0.2);
-      border-radius: 5px;
-      padding: 10px;
-      text-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
-      opacity: 0;
-      display: none;
-
-      & .title {
-        font-family: monospace;
-        /* font-family: 'Brush Script MT', cursive; */
-        text-transform: uppercase;
-      }
-
-      & .description {
-        line-height: 1.7;
-        margin: 1rem 0 1.5rem;
-        font-size: 1rem;
-        font-family: 'Brush Script MT', cursive;
-        letter-spacing: 1px;
-        word-spacing: 3px;
-        font-weight: 500;
-      }
-
-      & button {
-        width: fit-content;
-        background-color: rgba(0, 0, 0, 0.1);
-        color: white;
-        border: 2px solid white;
-        border-radius: 0.25rem;
-        padding: 0.75rem;
-        cursor: pointer;
-      }
+    nav.nav {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.7rem;
     }
-
-    .item:nth-of-type(2) .content {
-      display: block;
-      animation: show 0.75s ease-in-out 0.3s forwards;
+    nav.nav a {
+      margin: 0.3rem 0.75rem;
     }
-
-    @keyframes show {
-      0% {
-        filter: blur(5px);
-        transform: translateY(calc(-50% + 75px));
-      }
-
-      100% {
-        opacity: 1;
-        filter: blur(0);
-      }
+    button.subscribe-btn {
+      margin-left: 0;
+      width: 100%;
+      max-width: 220px;
     }
-
-    .nav {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 5;
-      -webkit-user-select: none;
-      user-select: none;
-
-      & .btn {
-        background-color: rgba(255, 255, 255, 0.5);
-        color: rgba(0, 0, 0, 0.7);
-        border: 2px solid rgba(0, 0, 0, 0.6);
-        margin: 0 0.25rem;
-        padding: 0.75rem;
-        border-radius: 50%;
-        cursor: pointer;
-
-        &:hover {
-          background-color: rgba(255, 255, 255, 0.3);
-        }
-      }
+    section.hero h1 {
+      font-size: 2rem;
     }
-
-    @media (width > 650px) and (width < 900px) {
-      .content {
-        & .title {
-          font-size: 1rem;
-        }
-
-        & .description {
-          font-size: 0.7rem;
-        }
-
-        & button {
-          font-size: 0.7rem;
-        }
-      }
-
-      .item {
-        width: 160px;
-        height: 270px;
-
-        &:nth-child(3) {
-          left: 50%;
-        }
-
-        &:nth-child(4) {
-          left: calc(50% + 170px);
-        }
-
-        &:nth-child(5) {
-          left: calc(50% + 340px);
-        }
-
-        &:nth-child(6) {
-          left: calc(50% + 510px);
-          opacity: 0;
-        }
-      }
+    section.hero p {
+      font-size: 1rem;
     }
-
-    @media (width < 650px) {
-      .content {
-        & .title {
-          font-size: 0.9rem;
-        }
-
-        & .description {
-          font-size: 0.9rem;
-        }
-
-        & button {
-          font-size: 0.7rem;
-        }
-      }
-
-      .item {
-        width: 130px;
-        height: 220px;
-
-        &:nth-child(3) {
-          left: 50%;
-        }
-
-        &:nth-child(4) {
-          left: calc(50% + 140px);
-        }
-
-        &:nth-child(5) {
-          left: calc(50% + 280px);
-        }
-
-        &:nth-child(6) {
-          left: calc(50% + 420px);
-          opacity: 0;
-        }
-      }
+    button.get-started-btn {
+      font-size: 1rem;
+      padding: 0.6rem 1.5rem;
     }
-
-    #audio1 {
-      margin-top: 40px;
-      height: 50px;
+    .author-grid {
+      grid-template-columns: 1fr;
     }
-
-    .audio-player {
-      outline: none;
-      width: 300px;
-      height: 50px;
-      background-color: floralwhite;
-      border: 1px solid #f1f3f4;
-      border-radius: 12px;
-    }
-
-    .audio-player::-webkit-media-controls {
-      background-color: #f1f3f4;
-      border-radius: 12px;
-    }
-
-    .audio-player::-webkit-media-controls-play-button {
-      background-color: cornflowerblue;
-      color: #f1f3f4;
-      padding: 10px 20px;
-      border-radius: 12px;
-      cursor: pointer;
-    }
-
-
-    .audio-player::-webkit-media-controls-timeline {
-      background-color: #f1f3f4;
-      width: 50px;
-      height: 4px;
-      border-radius: 12px;
-    }
-
-    .audio-player::-webkit-media-controls-volume-slider {
-      background-color: #e5e7e8;
-      width: 50px;
-      height: 3px;
-      border-radius: 12px;
-    }
-
-    .order {
-      margin-top: 10px;
-      font-family: cursive;
-      font-size: 24px;
-      letter-spacing: 2px;
-      word-spacing: 10px;
-    }
-  </style>
+  }
+</style>
 </head>
-
-<!-- dl.dropboxusercontent -->
-
 <body>
-  <!-- <h3 class="order">Play this first ▶️ <br> & then scroll down <br>
-    & click next ➡️</h3> -->
-  <audio class="audio-player" id="audio1"
-    src="https://dl.dropboxusercontent.com/scl/fi/xyr6xfadanoo50b0fw50z/Jabra-Fan-for-Rohit-Sharma.mp3?rlkey=f0g3438dokbuziifswzy01gfw&st=u5hw398k&dl=0"
-    controls></audio>
-  <main>
 
-    <ul class='slider'>
-      <li class='item'
-        style="background-image: url('https://dl.dropboxusercontent.com/scl/fi/nfsqql7ebeiiig5rbnf5y/Rohit-Sharma-lifting-T20wc-goosebumps.jpg?rlkey=06ttaa0wyn4ydm1zoas67ndxh&st=frnbwu5y&dl=0')">
-        <!-- <div class='content'>
-          <h2 class='title'> </h2>
-          <p class='description'> </p>
-        </div> -->
-      </li>
+<header class="header" role="banner">
+  <div class="logo" aria-label="Finsweet Logo"style="color: white;">Finsweet</div>
+  <nav class="nav" role="navigation" aria-label="Primary Navigation">
+    <a href="#" tabindex="0" style="font-weight: bold; color: #facc15;">Home</a>
+    <a href="about.html" tabindex="0"style="color: white;">About Us</a>
+    <a href="contact.html" tabindex="0"style="color: white;">Contact Us</a>
+    <button class="subscribe-btn" aria-label="Subscribe Button"><a href="login.html">Logout</a></button>
+  </nav>
+</header>
 
-      <li class='item'
-        style="background-image: url('https://dl.dropboxusercontent.com/scl/fi/amc4edqk8216obyrx5gxt/Hitman-einstein.jpg?rlkey=jzfrdvq8no7i9u9exbv4aqths&st=9awmux0b&dl=0')">
-        <div class='content'>
-          <h2 class='title'>Happy Birthday ❤️</h2>
-          <p class='description'>You made me fall-in-love with your batting! the elegance in your batting is incredible.
-            When you bat well I sleep well
-          </p>
-        </div>
-      </li>
+<section class="hero" role="region" aria-label="Hero Section">
+  <div class="hero-content">
+    <h1 style="color: white;">Start your content writing journey today</h1>
+    <p>Join us and explore the world of writing with our expert tips and resources.</p>
+    <button class="get-started-btn" aria-label="Get Started Button">Get Started</button>
+  </div>
+</section>
 
-      <li class='item'
-        style="background-image: url('https://dl.dropboxusercontent.com/scl/fi/6te9koydj1wc92k7j9ep5/hittu-in-test.jpg?rlkey=ovjz8ix0rnnvzv49nfvtojnbw&st=zog2ildg&dl=0')">
-        <div class='content'>
-          <h2 class='title'>Beautiful ❤️</h2>
-          <p class='description'>Whenever you bats my Heart says : <br> <br> Jaata hua लम्हा थम jaaye,
-            <br> Waqt ka
-            dariya behte behte is मंज़र mein जम jaaye
-          </p>
-        </div>
-      </li>
+<section class="featured-posts" role="region" aria-labelledby="featured-title">
+  <div class="featured-post" tabindex="0">
+    <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=800&q=80" alt="Featured blog post" />
+    <h2 id="featured-title">How to Maximize Your Content's Reach</h2>
+    <p>Explore comprehensive strategies to enhance the impact of your blog posts and engage readers effectively.</p>
+    <button class="read-more-btn" aria-label="Read more about maximizing content reach">Read More</button>
+  </div>
+  <div class="latest-articles" aria-label="Latest Articles">
+    <h3>Latest Articles</h3>
+    <article tabindex="0">
+      <h4>7 Tips for Effective Online Storytelling</h4>
+      <p><time datetime="2024-06-10">June 10, 2024</time> &bull; Learn how to craft stories that captivate and convert your audience.</p>
+    </article>
+    <article tabindex="0">
+      <h4>Understanding SEO for Beginners</h4>
+      <p><time datetime="2024-05-28">May 28, 2024</time> &bull; A practical guide to get your blog noticed on search engines.</p>
+    </article>
+    <article tabindex="0">
+      <h4>Building Your Brand with Consistent Content</h4>
+      <p><time datetime="2024-05-15">May 15, 2024</time> &bull; How to establish trust and authority through regular publishing.</p>
+    </article>
+    <article tabindex="0">
+      <h4>Boost Your Blog Engagement</h4>
+      <p><time datetime="2024-05-03">May 3, 2024</time> &bull; Techniques to turn readers into loyal followers.</p>
+    </article>
+  </div>
+</section>
 
-      <li class='item'
-        style="background-image: url('https://dl.dropboxusercontent.com/scl/fi/74wfdy4bkpcookhzss5x8/hittu-double-ton.jpg?rlkey=h29rn3hr3h1asbk9glwtwaw4j&st=021p4lor&dl=0')">
-        <div class='content'>
-          <h2 class='title'> HITMAN 🏏</h2>
-          <p class='description'>If batting is a code, then you would be a perfect algorithm - optimized for the
-            elegance and performance. Your time complexity would be O(1), cuz your timimg is unmatchable </p>
-        </div>
-      </li>
+<div class="quote-box" role="region" aria-label="Featured Quote">
+  <p>"Finsweet transformed my content writing journey — their expert insights made all the difference!"</p>
+</div>
 
-      <li class='item'
-        style="background-image: url('https://dl.dropboxusercontent.com/scl/fi/rpvrmu9ge98bxxn5vacgf/Hitman-with-trophy.jpg?rlkey=vvdccabjv359vrcfe7bm3j24y&st=ik5kkrjh&dl=0')">
-        <div class='content'>
-          <h2 class='title'> 💕💕💕💕 </h2>
-          <p class='description'>You are my favourite cricketer, but apart from cricket I love you as a human being, I
-            wanna be a person like you ❤️ </p>
-        </div>
-      </li>
+<section class="categories" role="region" aria-label="Choose a Category">
+  <div class="category-card highlighted" tabindex="0" aria-label="Business Category">
+    <svg class="category-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M3 3h18v6H3V3zm2 8h14v10H5V11z" fill="currentColor"/>
+    </svg>
+    <h4>Business</h4>
+    <p>Insights on growth, management, and entrepreneurship.</p>
+  </div>
+  <div class="category-card" tabindex="0" aria-label="Startup Category">
+    <svg class="category-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" fill="none"/>
+      <path d="M12 7v5l3 3" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+    </svg>
+    <h4>Startup</h4>
+    <p>The latest trends and tips for new ventures.</p>
+  </div>
+  <div class="category-card" tabindex="0" aria-label="Economy Category">
+    <svg class="category-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <rect x="5" y="5" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"/>
+      <path d="M7 17v-8h10v8" stroke="currentColor" stroke-width="2" fill="none"/>
+    </svg>
+    <h4>Economy</h4>
+    <p>Breaking down today's economic environment.</p>
+  </div>
+  <div class="category-card" tabindex="0" aria-label="Technology Category">
+    <svg class="category-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+      <path d="M8 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M12 8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <h4>Technology</h4>
+    <p>Updates on tech trends and innovations.</p>
+  </div>
+</section>
 
-      <li class='item'
-        style="background-image: url('https://dl.dropboxusercontent.com/scl/fi/l0l9um8vv3aklqf1aru27/Hitman-in-test-black-white.jpg?rlkey=ygoyu2n5s6f0fwmu65qqeczsb&st=ivrd1hbb&dl=0')">
-        <div class='content'>
-          <h2 class='title'> Thanks ❤️</h2>
-          <p class='description'>Thanks for making my childhood better, now I can tell my kids that I watched <br> Rohit
-            Sharma ❤️</p>
-        </div>
-      </li>
+<section class="latest-blog-post" role="region" aria-labelledby="latest-blog-title">
+  <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Latest Blog Post Image" />
+  <div class="latest-post-content">
+    <h2 id="latest-blog-title">It started out as a simple idea and evolved...</h2>
+    <button class="read-more-btn" aria-label="Read more about latest blog post">Read More</button>
+  </div>
+</section>
 
+<section class="authors" aria-label="List of Authors">
+  <h3>Meet Our Authors</h3>
+  <div class="author-grid">
+    <div class="author-card" tabindex="0">
+      <img src="https://dl.dropboxusercontent.com/scl/fi/y8e8qlf0q5bjal24rxws7/IMG-20250531-WA0003.jpg?rlkey=ekhpryk32ch9o19ubdb8gff5x&st=xtt22o35&dl=0" alt="Emily Johnson" />
+      <h4>Alok Tiwari</h4>
+      <div class="social-icons">
+        <a href="#" aria-label="Emily Johnson LinkedIn" title="LinkedIn">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M4.98 3.5C3.41 3.5 2.12 4.78 2.12 6.35c0 1.55 1.27 2.82 2.86 2.82h.03c1.73 0 2.95-1.38 2.95-2.94 0-1.58-1.28-2.82-2.86-2.82zM.2 8.98h5.53v13.64H.2V8.98zM8.71 8.98h5.3v1.89h.08c.74-1.4 2.54-2.88 5.22-2.88 5.58 0 6.6 3.68 6.6 8.46v9.17h-5.52v-8.13c0-1.95-.03-4.43-2.7-4.43-2.7 0-3.11 2.11-3.11 4.29v8.27h-5.48V8.98z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Emily Johnson Twitter" title="Twitter">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M23 3a10.9 10.9 0 01-3.14.86 5.48 5.48 0 002.4-3.03 10.06 10.06 0 01-3.31 1.25 5.44 5.44 0 00-9.28 4.96 15.45 15.45 0 01-11.22-5.7 5.44 5.44 0 001.69 7.28A5.35 5.35 0 01.64 7.4v.07A5.44 5.44 0 005.45 12a5.44 5.44 0 01-2.45.1 5.44 5.44 0 005.08 3.79A10.9 10.9 0 012 18a15.45 15.45 0 008.41 2.42c10.1 0 15.63-8.36 15.63-15.62 0-.24 0-.47-.02-.7A11.18 11.18 0 0023 3z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Emily Johnson Facebook" title="Facebook">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M22.675 0h-21.35C.579 0 0 .58 0 1.29v21.417c0 .71.578 1.293 1.29 1.293h11.486v-9.294H9.691v-3.622h3.085V8.413c0-3.058 1.866-4.726 4.59-4.726 1.308 0 2.43.097 2.757.142v3.19H17.72c-1.529 0-1.824.724-1.824 1.79v2.345h3.646l-.476 3.622h-3.17v9.294h6.216c.71 0 1.282-.578 1.282-1.293V1.29c0-.71-.572-1.29-1.284-1.29z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="author-card" tabindex="0">
+      <img src="https://dl.dropboxusercontent.com/scl/fi/vs13zydmn2q306htcxb82/IMG-20250531-WA0005.jpg?rlkey=x99tf7tpk6o5gxj1lm3jferz0&st=07y0fb59&dl=0" alt="Michael Davis" />
+      <h4>Imran Hussain</h4>
+      <div class="social-icons">
+        <a href="#" aria-label="Michael Davis LinkedIn" title="LinkedIn">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M4.98 3.5C3.41 3.5 2.12 4.78 2.12 6.35c0 1.55 1.27 2.82 2.86 2.82h.03c1.73 0 2.95-1.38 2.95-2.94 0-1.58-1.28-2.82-2.86-2.82zM.2 8.98h5.53v13.64H.2V8.98zM8.71 8.98h5.3v1.89h.08c.74-1.4 2.54-2.88 5.22-2.88 5.58 0 6.6 3.68 6.6 8.46v9.17h-5.52v-8.13c0-1.95-.03-4.43-2.7-4.43-2.7 0-3.11 2.11-3.11 4.29v8.27h-5.48V8.98z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Michael Davis Twitter" title="Twitter">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M23 3a10.9 10.9 0 01-3.14.86 5.48 5.48 0 002.4-3.03 10.06 10.06 0 01-3.31 1.25 5.44 5.44 0 00-9.28 4.96 15.45 15.45 0 01-11.22-5.7 5.44 5.44 0 001.69 7.28A5.35 5.35 0 01.64 7.4v.07A5.44 5.44 0 005.45 12a5.44 5.44 0 01-2.45.1 5.44 5.44 0 005.08 3.79A10.9 10.9 0 012 18a15.45 15.45 0 008.41 2.42c10.1 0 15.63-8.36 15.63-15.62 0-.24 0-.47-.02-.7A11.18 11.18 0 0023 3z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Michael Davis Facebook" title="Facebook">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M22.675 0h-21.35C.579 0 0 .58 0 1.29v21.417c0 .71.578 1.293 1.29 1.293h11.486v-9.294H9.691v-3.622h3.085V8.413c0-3.058 1.866-4.726 4.59-4.726 1.308 0 2.43.097 2.757.142v3.19H17.72c-1.529 0-1.824.724-1.824 1.79v2.345h3.646l-.476 3.622h-3.17v9.294h6.216c.71 0 1.282-.578 1.282-1.293V1.29c0-.71-.572-1.29-1.284-1.29z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="author-card" tabindex="0">
+      <img src="https://dl.dropboxusercontent.com/scl/fi/i26najvdibeb1rcwgu9ju/IMG-20250531-WA0002.jpg?rlkey=2mlhvviqicblvao8a7eod3dh4&st=pbwdnqzi&dl=0" alt="Sophia Martinez" />
+      <h4>Parv Saini</h4>
+      <div class="social-icons">
+        <a href="#" aria-label="Sophia Martinez LinkedIn" title="LinkedIn">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M4.98 3.5C3.41 3.5 2.12 4.78 2.12 6.35c0 1.55 1.27 2.82 2.86 2.82h.03c1.73 0 2.95-1.38 2.95-2.94 0-1.58-1.28-2.82-2.86-2.82zM.2 8.98h5.53v13.64H.2V8.98zM8.71 8.98h5.3v1.89h.08c.74-1.4 2.54-2.88 5.22-2.88 5.58 0 6.6 3.68 6.6 8.46v9.17h-5.52v-8.13c0-1.95-.03-4.43-2.7-4.43-2.7 0-3.11 2.11-3.11 4.29v8.27h-5.48V8.98z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Sophia Martinez Twitter" title="Twitter">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M23 3a10.9 10.9 0 01-3.14.86 5.48 5.48 0 002.4-3.03 10.06 10.06 0 01-3.31 1.25 5.44 5.44 0 00-9.28 4.96 15.45 15.45 0 01-11.22-5.7 5.44 5.44 0 001.69 7.28A5.35 5.35 0 01.64 7.4v.07A5.44 5.44 0 005.45 12a5.44 5.44 0 01-2.45.1 5.44 5.44 0 005.08 3.79A10.9 10.9 0 012 18a15.45 15.45 0 008.41 2.42c10.1 0 15.63-8.36 15.63-15.62 0-.24 0-.47-.02-.7A11.18 11.18 0 0023 3z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Sophia Martinez Facebook" title="Facebook">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M22.675 0h-21.35C.579 0 0 .58 0 1.29v21.417c0 .71.578 1.293 1.29 1.293h11.486v-9.294H9.691v-3.622h3.085V8.413c0-3.058 1.866-4.726 4.59-4.726 1.308 0 2.43.097 2.757.142v3.19H17.72c-1.529 0-1.824.724-1.824 1.79v2.345h3.646l-.476 3.622h-3.17v9.294h6.216c.71 0 1.282-.578 1.282-1.293V1.29c0-.71-.572-1.29-1.284-1.29z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="author-card" tabindex="0">
+      <img src="https://dl.dropboxusercontent.com/scl/fi/v9o4wddgzyykzuh95n8s3/IMG_20250531_134456.jpg?rlkey=toathgvjw8908xbdu93eghcbd&st=gs1v6qtp&dl=0" alt="James Wilson" />
+      <h4>Vedant Sahu</h4>
+      <div class="social-icons">
+        <a href="#" aria-label="James Wilson LinkedIn" title="LinkedIn">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M4.98 3.5C3.41 3.5 2.12 4.78 2.12 6.35c0 1.55 1.27 2.82 2.86 2.82h.03c1.73 0 2.95-1.38 2.95-2.94 0-1.58-1.28-2.82-2.86-2.82zM.2 8.98h5.53v13.64H.2V8.98zM8.71 8.98h5.3v1.89h.08c.74-1.4 2.54-2.88 5.22-2.88 5.58 0 6.6 3.68 6.6 8.46v9.17h-5.52v-8.13c0-1.95-.03-4.43-2.7-4.43-2.7 0-3.11 2.11-3.11 4.29v8.27h-5.48V8.98z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="James Wilson Twitter" title="Twitter">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M23 3a10.9 10.9 0 01-3.14.86 5.48 5.48 0 002.4-3.03 10.06 10.06 0 01-3.31 1.25 5.44 5.44 0 00-9.28 4.96 15.45 15.45 0 01-11.22-5.7 5.44 5.44 0 001.69 7.28A5.35 5.35 0 01.64 7.4v.07A5.44 5.44 0 005.45 12a5.44 5.44 0 01-2.45.1 5.44 5.44 0 005.08 3.79A10.9 10.9 0 012 18a15.45 15.45 0 008.41 2.42c10.1 0 15.63-8.36 15.63-15.62 0-.24 0-.47-.02-.7A11.18 11.18 0 0023 3z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="James Wilson Facebook" title="Facebook">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M22.675 0h-21.35C.579 0 0 .58 0 1.29v21.417c0 .71.578 1.293 1.29 1.293h11.486v-9.294H9.691v-3.622h3.085V8.413c0-3.058 1.866-4.726 4.59-4.726 1.308 0 2.43.097 2.757.142v3.19H17.72c-1.529 0-1.824.724-1.824 1.79v2.345h3.646l-.476 3.622h-3.17v9.294h6.216c.71 0 1.282-.578 1.282-1.293V1.29c0-.71-.572-1.29-1.284-1.29z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <!-- <div class="author-card" tabindex="0">
+      <img src="https://randomuser.me/api/portraits/women/21.jpg" alt="Olivia Brown" />
+      <h4>Olivia Brown</h4>
+      <div class="social-icons">
+        <a href="#" aria-label="Olivia Brown LinkedIn" title="LinkedIn">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M4.98 3.5C3.41 3.5 2.12 4.78 2.12 6.35c0 1.55 1.27 2.82 2.86 2.82h.03c1.73 0 2.95-1.38 2.95-2.94 0-1.58-1.28-2.82-2.86-2.82zM.2 8.98h5.53v13.64H.2V8.98zM8.71 8.98h5.3v1.89h.08c.74-1.4 2.54-2.88 5.22-2.88 5.58 0 6.6 3.68 6.6 8.46v9.17h-5.52v-8.13c0-1.95-.03-4.43-2.7-4.43-2.7 0-3.11 2.11-3.11 4.29v8.27h-5.48V8.98z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Olivia Brown Twitter" title="Twitter">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M23 3a10.9 10.9 0 01-3.14.86 5.48 5.48 0 002.4-3.03 10.06 10.06 0 01-3.31 1.25 5.44 5.44 0 00-9.28 4.96 15.45 15.45 0 01-11.22-5.7 5.44 5.44 0 001.69 7.28A5.35 5.35 0 01.64 7.4v.07A5.44 5.44 0 005.45 12a5.44 5.44 0 01-2.45.1 5.44 5.44 0 005.08 3.79A10.9 10.9 0 012 18a15.45 15.45 0 008.41 2.42c10.1 0 15.63-8.36 15.63-15.62 0-.24 0-.47-.02-.7A11.18 11.18 0 0023 3z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Olivia Brown Facebook" title="Facebook">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M22.675 0h-21.35C.579 0 0 .58 0 1.29v21.417c0 .71.578 1.293 1.29 1.293h11.486v-9.294H9.691v-3.622h3.085V8.413c0-3.058 1.866-4.726 4.59-4.726 1.308 0 2.43.097 2.757.142v3.19H17.72c-1.529 0-1.824.724-1.824 1.79v2.345h3.646l-.476 3.622h-3.17v9.294h6.216c.71 0 1.282-.578 1.282-1.293V1.29c0-.71-.572-1.29-1.284-1.29z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="author-card" tabindex="0">
+      <img src="https://randomuser.me/api/portraits/men/34.jpg" alt="William Moore" />
+      <h4>William Moore</h4>
+      <div class="social-icons">
+        <a href="#" aria-label="William Moore LinkedIn" title="LinkedIn">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M4.98 3.5C3.41 3.5 2.12 4.78 2.12 6.35c0 1.55 1.27 2.82 2.86 2.82h.03c1.73 0 2.95-1.38 2.95-2.94 0-1.58-1.28-2.82-2.86-2.82zM.2 8.98h5.53v13.64H.2V8.98zM8.71 8.98h5.3v1.89h.08c.74-1.4 2.54-2.88 5.22-2.88 5.58 0 6.6 3.68 6.6 8.46v9.17h-5.52v-8.13c0-1.95-.03-4.43-2.7-4.43-2.7 0-3.11 2.11-3.11 4.29v8.27h-5.48V8.98z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="William Moore Twitter" title="Twitter">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M23 3a10.9 10.9 0 01-3.14.86 5.48 5.48 0 002.4-3.03 10.06 10.06 0 01-3.31 1.25 5.44 5.44 0 00-9.28 4.96 15.45 15.45 0 01-11.22-5.7 5.44 5.44 0 001.69 7.28A5.35 5.35 0 01.64 7.4v.07A5.44 5.44 0 005.45 12a5.44 5.44 0 01-2.45.1 5.44 5.44 0 005.08 3.79A10.9 10.9 0 012 18a15.45 15.45 0 008.41 2.42c10.1 0 15.63-8.36 15.63-15.62 0-.24 0-.47-.02-.7A11.18 11.18 0 0023 3z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="William Moore Facebook" title="Facebook">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M22.675 0h-21.35C.579 0 0 .58 0 1.29v21.417c0 .71.578 1.293 1.29 1.293h11.486v-9.294H9.691v-3.622h3.085V8.413c0-3.058 1.866-4.726 4.59-4.726 1.308 0 2.43.097 2.757.142v3.19H17.72c-1.529 0-1.824.724-1.824 1.79v2.345h3.646l-.476 3.622h-3.17v9.294h6.216c.71 0 1.282-.578 1.282-1.293V1.29c0-.71-.572-1.29-1.284-1.29z"/>
+          </svg> -->
+        </a>
+      </div>
+    </div>
+    <!-- <div class="author-card" tabindex="0">
+      <img src="https://randomuser.me/api/portraits/women/29.jpg" alt="Isabella Garcia" />
+      <h4>Isabella Garcia</h4>
+      <div class="social-icons">
+        <a href="#" aria-label="Isabella Garcia LinkedIn" title="LinkedIn">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M4.98 3.5C3.41 3.5 2.12 4.78 2.12 6.35c0 1.55 1.27 2.82 2.86 2.82h.03c1.73 0 2.95-1.38 2.95-2.94 0-1.58-1.28-2.82-2.86-2.82zM.2 8.98h5.53v13.64H.2V8.98zM8.71 8.98h5.3v1.89h.08c.74-1.4 2.54-2.88 5.22-2.88 5.58 0 6.6 3.68 6.6 8.46v9.17h-5.52v-8.13c0-1.95-.03-4.43-2.7-4.43-2.7 0-3.11 2.11-3.11 4.29v8.27h-5.48V8.98z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Isabella Garcia Twitter" title="Twitter">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M23 3a10.9 10.9 0 01-3.14.86 5.48 5.48 0 002.4-3.03 10.06 10.06 0 01-3.31 1.25 5.44 5.44 0 00-9.28 4.96 15.45 15.45 0 01-11.22-5.7 5.44 5.44 0 001.69 7.28A5.35 5.35 0 01.64 7.4v.07A5.44 5.44 0 005.45 12a5.44 5.44 0 01-2.45.1 5.44 5.44 0 005.08 3.79A10.9 10.9 0 012 18a15.45 15.45 0 008.41 2.42c10.1 0 15.63-8.36 15.63-15.62 0-.24 0-.47-.02-.7A11.18 11.18 0 0023 3z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Isabella Garcia Facebook" title="Facebook">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M22.675 0h-21.35C.579 0 0 .58 0 1.29v21.417c0 .71.578 1.293 1.29 1.293h11.486v-9.294H9.691v-3.622h3.085V8.413c0-3.058 1.866-4.726 4.59-4.726 1.308 0 2.43.097 2.757.142v3.19H17.72c-1.529 0-1.824.724-1.824 1.79v2.345h3.646l-.476 3.622h-3.17v9.294h6.216c.71 0 1.282-.578 1.282-1.293V1.29c0-.71-.572-1.29-1.284-1.29z"/>
+          </svg>
+        </a>
+      </div>
+    </div> -->
+  </div>
+</section>
 
-    </ul>
-    <nav class='nav'>
-      <ion-icon class='btn prev' name="arrow-back-outline"></ion-icon>
-      <ion-icon class='btn next' name="arrow-forward-outline"></ion-icon>
-    </nav>
-  </main>
+<section class="call-to-action" role="region" aria-label="Join Our Team Call to Action">
+  <h2>Join our team to be a part of our story</h2>
+  <button class="join-now-btn" aria-label="Join Now">Join Now</button>
+</section>
 
-  <!-- <h3 class="order">  </h3> -->
-  <br>
-  <audio class="audio-player" id="audio2"
-    src="https://dl.dropboxusercontent.com/scl/fi/ykqzm6l3iov3yxe325xll/Tu-Chahiye-Rohit-Sharma.mp3?rlkey=p3mh70aoz67tokr9deglh4mmn&st=nyzpo6cu&dl=0"
-    controls></audio>
+<footer class="footer" role="contentinfo">
+  <div class="footer-left">
+    <div class="logo" aria-label="Finsweet Logo">Finsweet</div>
+    <p>Subscribe to our newsletter for the latest updates and exclusive content.</p>
+  </div>
+  <div class="footer-right">
+    <input type="email" placeholder="Your email" aria-label="Email address for newsletter subscription" />
+    <button class="subscribe-btn" aria-label="Subscribe to newsletter">Subscribe</button>
+  </div>
+  <nav class="footer-nav" aria-label="Footer Navigation">
+    <a href="#" tabindex="0">Home</a>
+    <a href="#" tabindex="0">Blog</a>
+    <a href="#" tabindex="0">About Us</a>
+    <a href="#" tabindex="0">Contact</a>
+    <a href="#" tabindex="0">Privacy Policy</a>
+  </nav>
+</footer>
 
-
-  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-  <!-- partial -->
-  <script>
-    const slider = document.querySelector('.slider');
-
-    function activate(e) {
-      const items = document.querySelectorAll('.item');
-      e.target.matches('.next') && slider.append(items[0]);
-      e.target.matches('.prev') && slider.prepend(items[items.length - 1]);
-    }
-    document.addEventListener('click', activate, false);
-
-    const audioPlayers = [document.getElementById('audio1'), document.getElementById('audio2')];
-
-    // // Add event listeners to the play button
-    // audioPlayer.addEventListener('play', () => {
-    //   console.log('Audio is playing');
-    // });
-
-    // audioPlayer.addEventListener('pause', () => {
-    //   console.log('Audio is paused');
-    // });
-
-    // // Add event listener to the volume slider
-    // audioPlayer.addEventListener('volumechange', () => {
-    //   console.log('Volume changed');
-    // });
-
-    // Add event listeners to the play button
-    audioPlayers.forEach(audioPlayer => {
-      audioPlayer.addEventListener('play', () => {
-        console.log(`Audio ${audioPlayer.id} is playing`);
-      });
-
-      audioPlayer.addEventListener('pause', () => {
-        console.log(`Audio ${audioPlayer.id} is paused`);
-      });
-
-      audioPlayer.addEventListener('volumechange', () => {
-        console.log(`Volume changed on ${audioPlayer.id}`);
-      });
-    });
-
-
-  </script>
 </body>
-
 </html>
 
-<!-- created by VEDANT SAHU with...... -->

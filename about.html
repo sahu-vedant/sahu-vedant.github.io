@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <title>About Us - Finsweet</title>
+  <style>
+    /* Reset and base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: #222;
+      background: #f9f9f9;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    a:hover,
+    button:hover {
+      opacity: 0.85;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+      border-radius: 8px;
+    }
+    h1, h2, h3, h4, h5 {
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      color: #111;
+      line-height: 1.2;
+    }
+    p {
+      margin-bottom: 1rem;
+      color: #444;
+      font-weight: 500;
+    }
+    /* Utilities */
+    .text-center {
+      text-align: center;
+    }
+    .mb-10 {
+      margin-bottom: 2.5rem;
+    }
+    .mb-6 {
+      margin-bottom: 1.5rem;
+    }
+    .mb-4 {
+      margin-bottom: 1rem;
+    }
+    .btn {
+      border: none;
+      cursor: pointer;
+      padding: 12px 28px;
+      font-weight: 600;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      background-color: #ffd600;
+      color: #121212;
+    }
+    .btn:hover {
+      background-color: #ffec3d;
+    }
+
+    /* Colors */
+    :root {
+      --yellow: #ffd600;
+      --black: #121212;
+      --white: #fff;
+      --lightgray: #f9f9f9;
+      --purple-light: #e7e0ff;
+      --purple-dark: #6059e9;
+      --gray-text: #555;
+      --gray-light: #bbb;
+    }
+
+    /* Header */
+    header.header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      box-shadow: 0 2px 7px rgb(0 0 0 / 0.1);
+      font-weight: 600;
+
+      background: #0f172a;
+    }
+    header .logo {
+      font-size: 1.5rem;
+      color: var(--black);
+    }
+    nav.nav {
+      display: flex;
+      align-items: center;
+      gap: 2.2rem;
+    }
+    nav.nav a {
+      font-size: 1rem;
+      color: var(--black);
+      position: relative;
+      padding: 4px 0;
+    }
+    nav.nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      border-radius: 3px;
+      background-color: var(--yellow);
+      transition: width 0.3s ease;
+    }
+    nav.nav a:hover::after,
+    nav.nav a.active::after {
+      width: 100%;
+    }
+    button.subscribe-btn {
+      margin-left: 1.5rem;
+      background-color: var(--yellow);
+      color: var(--black);
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 6px;
+      padding: 10px 20px;
+      border: none;
+      box-shadow: 0 6px 16px rgb(255 214 0 / 0.5);
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+    }
+    button.subscribe-btn:hover {
+      background-color: #ffec3d;
+      box-shadow: 0 8px 25px rgb(255 214 0 / 0.7);
+    }
+
+    /* Main Section*/
+    main.main-section {
+      max-width: 1200px;
+      margin: 3rem auto 6rem;
+      padding: 0 1.5rem 3rem;
+    }
+
+    /* Title section with paragraphs */
+    .about-title {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 3.5rem;
+      align-items: flex-start;
+    }
+    .about-title h1 {
+      flex: 0 0 48%;
+      font-size: 2.7rem;
+      line-height: 1.15;
+      color: var(--black);
+      font-weight: 800;
+      min-width: 280px;
+    }
+    .about-title p.left {
+      flex: 0 0 48%;
+      max-width: 48%;
+      color: var(--gray-text);
+      font-weight: 500;
+      font-size: 1.05rem;
+      min-width: 280px;
+      line-height: 1.5;
+    }
+    .about-title p.right {
+      flex: 0 0 48%;
+      max-width: 48%;
+      color: var(--gray-text);
+      font-weight: 500;
+      font-size: 1.05rem;
+      min-width: 280px;
+      text-align: right;
+      line-height: 1.5;
+    }
+
+    /* Background image with stat cards */
+    .about-image-container {
+      position: relative;
+      height: 420px;
+      margin-bottom: 5rem;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgb(0 0 0 / 0.15);
+    }
+    .about-image-container img.background-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.7);
+      border-radius: 12px;
+      z-index: 0;
+    }
+    .stat-cards-container {
+      position: relative;
+      z-index: 1;
+      max-width: 880px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 0 1rem;
+      gap: 2rem;
+    }
+    .stat-card {
+      background: var(--yellow);
+      flex: 1;
+      min-width: 190px;
+      border-radius: 16px;
+      padding: 2rem 1.6rem;
+      box-shadow: 0 8px 24px rgb(255 214 0 / 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-align: center;
+      color: var(--black);
+      user-select: none;
+      transition: box-shadow 0.3s ease;
+    }
+    .stat-card:hover {
+      box-shadow: 0 12px 40px rgb(255 214 0 / 0.75);
+    }
+
+    /* Mission and Vision Cards */
+    .mission-vision {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 5rem;
+      flex-wrap: wrap;
+    }
+    .mission-card, .vision-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 2.5rem 2.2rem;
+      box-shadow: 0 8px 24px rgb(0 0 0 / 0.1);
+      flex: 1 1 48%;
+      min-width: 320px;
+      color: var(--black);
+    }
+    .mission-card h3,
+    .vision-card h3 {
+      margin-bottom: 1.2rem;
+      font-weight: 800;
+      font-size: 1.6rem;
+    }
+    .mission-card p,
+    .vision-card p {
+      font-weight: 500;
+      color: var(--gray-text);
+      font-size: 1.1rem;
+      line-height: 1.55;
+    }
+
+    /* Team Introduction */
+    .team-intro {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 3rem;
+      margin-bottom: 5rem;
+      flex-wrap: wrap;
+    }
+    .team-intro > div:first-child {
+      flex: 1 1 48%;
+      font-weight: 500;
+      font-size: 1.1rem;
+      color: var(--gray-text);
+      line-height: 1.5;
+      min-width: 320px;
+    }
+    .team-intro img {
+      flex: 1 1 48%;
+      object-fit: cover;
+      border-radius: 12px;
+      min-width: 320px;
+      max-height: 340px;
+      box-shadow: 0 10px 30px rgb(0 0 0 / 0.1);
+      transition: transform 0.3s ease;
+      cursor: default;
+    }
+    .team-intro img:hover {
+      transform: scale(1.03);
+    }
+
+    /* Blog Introduction */
+    .blog-intro {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 3rem;
+      margin-bottom: 6rem;
+      flex-wrap: wrap;
+    }
+    .blog-intro img {
+      flex: 1 1 48%;
+      object-fit: cover;
+      border-radius: 12px;
+      min-width: 320px;
+      max-height: 340px;
+      box-shadow: 0 10px 30px rgb(0 0 0 / 0.1);
+      transition: transform 0.3s ease;
+      cursor: default;
+    }
+    .blog-intro img:hover {
+      transform: scale(1.03);
+    }
+    .blog-intro > div {
+      flex: 1 1 48%;
+      min-width: 320px;
+    }
+    .blog-intro h2 {
+      margin-bottom: 1rem;
+      font-weight: 800;
+      font-size: 1.8rem;
+      color: var(--black);
+    }
+    .blog-intro p {
+      font-weight: 500;
+      font-size: 1.1rem;
+      color: var(--gray-text);
+      line-height: 1.55;
+    }
+
+    /* List of Authors */
+    .authors {
+      margin-bottom: 5rem;
+    }
+    .authors h3 {
+      font-weight: 800;
+      font-size: 1.8rem;
+      margin-bottom: 2.5rem;
+      text-align: center;
+      color: var(--black);
+    }
+    .author-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2.5rem;
+    }
+    .author-card {
+      background: var(--lightgray);
+      padding: 1.8rem;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgb(0 0 0 / 0.1);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      cursor: default;
+      user-select: none;
+    }
+    .author-card:hover {
+      box-shadow: 0 16px 42px rgb(0 0 0 / 0.2);
+      transform: translateY(-6px);
+    }
+    .author-card img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+    }
+    .author-card:hover img {
+      transform: scale(1.05);
+    }
+    .author-card h4 {
+      margin-bottom: 1rem;
+      color: var(--black);
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .social-icons a {
+      width: 22px;
+      height: 22px;
+      fill: #777;
+      transition: fill 0.3s ease;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .social-icons a svg {
+      width: 22px;
+      height: 22px;
+      display: block;
+    }
+    .social-icons a:hover {
+      fill: var(--yellow);
+    }
+
+    /* Call to Action */
+    .call-to-action {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+    .call-to-action h2 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      color: var(--black);
+    }
+    button.join-now-btn {
+      background: var(--yellow);
+      color: var(--black);
+      font-weight: 700;
+      padding: 1.2rem 3.5rem;
+      border-radius: 10px;
+      font-size: 1.25rem;
+      cursor: pointer;
+      box-shadow: 0 12px 35px rgb(255 214 0 / 0.4);
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+    button.join-now-btn:hover {
+      background-color: #fff34a;
+      box-shadow: 0 16px 50px rgb(255 214 0 / 0.6);
+    }
+
+    /* Footer */
+    footer.footer {
+      background: var(--black);
+      color: var(--white);
+      padding: 2rem 3rem 3rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+      font-weight: 500;
+    }
+    footer .footer-left,
+    footer .footer-right {
+      flex: 1 1 320px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    footer .footer-left .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--yellow);
+    }
+    footer .footer-left p {
+      font-size: 1rem;
+      color: #dcdcdc;
+      max-width: 420px;
+    }
+    footer .footer-right {
+      align-items: flex-start;
+    }
+    footer input[type="email"] {
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      border: none;
+      font-size: 1rem;
+      flex-grow: 1;
+      margin-bottom: 0.7rem;
+      min-width: 260px;
+    }
+    footer .subscribe-btn {
+      width: 140px;
+      align-self: flex-start;
+      background: var(--yellow);
+      color: var(--black);
+      font-weight: 700;
+      border-radius: 6px;
+      padding: 0.7rem 1.2rem;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 22px rgb(255 214 0 / 0.45);
+      transition: background-color 0.3s ease;
+    }
+    footer .subscribe-btn:hover {
+      background-color: #ffec3d;
+      box-shadow: 0 14px 30px rgb(255 214 0 / 0.6);
+    }
+    footer .footer-nav {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      margin-top: 1.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    footer .footer-nav a {
+      color: var(--white);
+      position: relative;
+      padding-bottom: 2px;
+    }
+    footer .footer-nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 3px;
+      border-radius: 3px;
+      background-color: var(--yellow);
+      transition: width 0.3s ease;
+    }
+    footer .footer-nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .about-title {
+        flex-direction: column;
+      }
+      .about-title h1,
+      .about-title p.left,
+      .about-title p.right {
+        flex: 1 1 100%;
+        max-width: 100%;
+        text-align: left;
+      }
+      .about-title p.right {
+        text-align: left;
+      }
+      .mission-vision {
+        flex-direction: column;
+      }
+      .mission-card,
+      .vision-card {
+        margin: 1rem 0;
+      }
+      .team-intro,
+      .blog-intro {
+        flex-direction: column;
+        align-items: center;
+      }
+      .team-intro > div:first-child,
+      .blog-intro > div {
+        flex: 1 1 100%;
+        max-width: 100%;
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+      .team-intro img,
+      .blog-intro img {
+        flex: 1 1 100%;
+        max-width: 100%;
+        max-height: 320px;
+      }
+      .author-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+      footer {
+        flex-direction: column;
+        gap: 2rem;
+      }
+      footer .footer-left,
+      footer .footer-right {
+        flex: 1 1 100%;
+        align-items: center;
+        text-align: center;
+      }
+      footer input[type="email"] {
+        min-width: auto;
+      }
+    }
+    @media (max-width: 480px) {
+      header.header {
+        padding: 1rem 1.3rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+        
+      }
+      nav.nav {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      nav.nav a {
+        margin: 0.2rem 0.5rem;
+        font-size: 0.9rem;
+      }
+      button.subscribe-btn {
+        margin-left: 0;
+        width: 100%;
+        max-width: 220px;
+      }
+      main.main-section {
+        margin: 2rem auto 4rem;
+      }
+      .call-to-action h2 {
+        font-size: 2rem;
+      }
+      button.join-now-btn {
+        font-size: 1.1rem;
+        padding: 1rem 2.5rem;
+      }
+      .author-card img {
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+
+  </style>
+</head>
+<body>
+
+<header class="header" role="banner" >
+  <div class="logo" aria-label="Finsweet Logo" style="color: white;">Finsweet</div>
+  <nav class="nav" role="navigation" aria-label="Primary Navigation">
+    <a href="index.html" tabindex="0"style="color: white;">Home</a>
+    <a href="about.html" tabindex="0" class="active"  style="font-weight: bold; color: #facc15;">About Us</a>
+    <a href="contact.html" tabindex="0" style="color: white;">Contact Us</a>
+    <button class="subscribe-btn" aria-label="Subscribe Button"><a href="login.html">Logout</a></button>
+  </nav>
+</header>
+
+<main class="main-section" role="main">
+  <section class="about-title" aria-label="About Us Title and paragraphs">
+    <h1>We are a team of content writers who share their learnings</h1>
+    <p class="left">
+      Our goal is to provide valuable insights and resources to help others succeed in their writing journey.
+    </p>
+    <p class="right">
+      We believe in the power of shared knowledge and community, inspiring writers at every skill level.
+    </p>
+  </section>
+
+  <section class="about-image-container" aria-label="Team background image and statistics">
+    <img
+      src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=1470&q=80"
+      alt="Team sitting together"
+      class="background-img"
+    />
+    <div class="stat-cards-container" role="list">
+      <div class="stat-card" role="listitem" aria-label="12+ Blogs Published">12+ Blogs Published</div>
+      <div class="stat-card" role="listitem" aria-label="18K+ Views on Finsweet">18K+ Views on Finsweet</div>
+      <div class="stat-card" role="listitem" aria-label="30K+ Total active Users">30K+ Total active Users</div>
+    </div>
+  </section>
+
+  <section class="mission-vision" aria-label="Mission and vision cards">
+    <article class="mission-card" aria-labelledby="mission-title">
+      <h3 id="mission-title">Our Mission</h3>
+      <p>
+        To empower writers with the knowledge and tools they need to express their ideas effectively.
+      </p>
+    </article>
+    <article class="vision-card" aria-labelledby="vision-title">
+      <h3 id="vision-title">Our Vision</h3>
+      <p>
+        To be a leading platform for writers, fostering a community of creativity and collaboration.
+      </p>
+    </article>
+  </section>
+
+  <section class="team-intro" aria-label="Team introduction">
+    <div>
+      <p>
+        Our team of creatives is dedicated to sharing their expertise and experiences in the world of content writing.
+      </p>
+    </div>
+    <img
+      src="https://images.unsplash.com/photo-1517524206127-48bbd363f3d0?auto=format&fit=crop&w=1470&q=80"
+      alt="Hands joined together"
+      loading="lazy"
+    />
+  </section>
+
+  <section class="blog-intro" aria-label="Blog introduction">
+    <img
+      src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1470&q=80"
+      alt="People working on laptops"
+      loading="lazy"
+    />
+    <div>
+      <h2>Why we started this blog</h2>
+      <p>
+        We wanted to create a space where writers can learn, grow, and connect with others who share their passion.
+      </p>
+    </div>
+  </section>
+
+  <!-- hidjsbjc -->
+ <section class="authors" aria-label="List of Authors">
+  <h3>Meet Our Authors</h3>
+  <div class="author-grid">
+    <div class="author-card" tabindex="0">
+      <img src="https://dl.dropboxusercontent.com/scl/fi/y8e8qlf0q5bjal24rxws7/IMG-20250531-WA0003.jpg?rlkey=ekhpryk32ch9o19ubdb8gff5x&st=xtt22o35&dl=0" alt="Emily Johnson" />
+      <h4>Alok Tiwari</h4>
+      <div class="social-icons">
+        <a href="#" aria-label="Emily Johnson LinkedIn" title="LinkedIn">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M4.98 3.5C3.41 3.5 2.12 4.78 2.12 6.35c0 1.55 1.27 2.82 2.86 2.82h.03c1.73 0 2.95-1.38 2.95-2.94 0-1.58-1.28-2.82-2.86-2.82zM.2 8.98h5.53v13.64H.2V8.98zM8.71 8.98h5.3v1.89h.08c.74-1.4 2.54-2.88 5.22-2.88 5.58 0 6.6 3.68 6.6 8.46v9.17h-5.52v-8.13c0-1.95-.03-4.43-2.7-4.43-2.7 0-3.11 2.11-3.11 4.29v8.27h-5.48V8.98z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Emily Johnson Twitter" title="Twitter">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M23 3a10.9 10.9 0 01-3.14.86 5.48 5.48 0 002.4-3.03 10.06 10.06 0 01-3.31 1.25 5.44 5.44 0 00-9.28 4.96 15.45 15.45 0 01-11.22-5.7 5.44 5.44 0 001.69 7.28A5.35 5.35 0 01.64 7.4v.07A5.44 5.44 0 005.45 12a5.44 5.44 0 01-2.45.1 5.44 5.44 0 005.08 3.79A10.9 10.9 0 012 18a15.45 15.45 0 008.41 2.42c10.1 0 15.63-8.36 15.63-15.62 0-.24 0-.47-.02-.7A11.18 11.18 0 0023 3z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Emily Johnson Facebook" title="Facebook">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M22.675 0h-21.35C.579 0 0 .58 0 1.29v21.417c0 .71.578 1.293 1.29 1.293h11.486v-9.294H9.691v-3.622h3.085V8.413c0-3.058 1.866-4.726 4.59-4.726 1.308 0 2.43.097 2.757.142v3.19H17.72c-1.529 0-1.824.724-1.824 1.79v2.345h3.646l-.476 3.622h-3.17v9.294h6.216c.71 0 1.282-.578 1.282-1.293V1.29c0-.71-.572-1.29-1.284-1.29z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="author-card" tabindex="0">
+      <img src="https://dl.dropboxusercontent.com/scl/fi/vs13zydmn2q306htcxb82/IMG-20250531-WA0005.jpg?rlkey=x99tf7tpk6o5gxj1lm3jferz0&st=07y0fb59&dl=0" alt="Michael Davis" />
+      <h4>Imran Hussain</h4>
+      <div class="social-icons">
+        <a href="#" aria-label="Michael Davis LinkedIn" title="LinkedIn">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M4.98 3.5C3.41 3.5 2.12 4.78 2.12 6.35c0 1.55 1.27 2.82 2.86 2.82h.03c1.73 0 2.95-1.38 2.95-2.94 0-1.58-1.28-2.82-2.86-2.82zM.2 8.98h5.53v13.64H.2V8.98zM8.71 8.98h5.3v1.89h.08c.74-1.4 2.54-2.88 5.22-2.88 5.58 0 6.6 3.68 6.6 8.46v9.17h-5.52v-8.13c0-1.95-.03-4.43-2.7-4.43-2.7 0-3.11 2.11-3.11 4.29v8.27h-5.48V8.98z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Michael Davis Twitter" title="Twitter">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M23 3a10.9 10.9 0 01-3.14.86 5.48 5.48 0 002.4-3.03 10.06 10.06 0 01-3.31 1.25 5.44 5.44 0 00-9.28 4.96 15.45 15.45 0 01-11.22-5.7 5.44 5.44 0 001.69 7.28A5.35 5.35 0 01.64 7.4v.07A5.44 5.44 0 005.45 12a5.44 5.44 0 01-2.45.1 5.44 5.44 0 005.08 3.79A10.9 10.9 0 012 18a15.45 15.45 0 008.41 2.42c10.1 0 15.63-8.36 15.63-15.62 0-.24 0-.47-.02-.7A11.18 11.18 0 0023 3z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Michael Davis Facebook" title="Facebook">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M22.675 0h-21.35C.579 0 0 .58 0 1.29v21.417c0 .71.578 1.293 1.29 1.293h11.486v-9.294H9.691v-3.622h3.085V8.413c0-3.058 1.866-4.726 4.59-4.726 1.308 0 2.43.097 2.757.142v3.19H17.72c-1.529 0-1.824.724-1.824 1.79v2.345h3.646l-.476 3.622h-3.17v9.294h6.216c.71 0 1.282-.578 1.282-1.293V1.29c0-.71-.572-1.29-1.284-1.29z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="author-card" tabindex="0">
+      <img src="https://dl.dropboxusercontent.com/scl/fi/i26najvdibeb1rcwgu9ju/IMG-20250531-WA0002.jpg?rlkey=2mlhvviqicblvao8a7eod3dh4&st=pbwdnqzi&dl=0" alt="Sophia Martinez" />
+      <h4>Parv Saini</h4>
+      <div class="social-icons">
+        <a href="#" aria-label="Sophia Martinez LinkedIn" title="LinkedIn">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M4.98 3.5C3.41 3.5 2.12 4.78 2.12 6.35c0 1.55 1.27 2.82 2.86 2.82h.03c1.73 0 2.95-1.38 2.95-2.94 0-1.58-1.28-2.82-2.86-2.82zM.2 8.98h5.53v13.64H.2V8.98zM8.71 8.98h5.3v1.89h.08c.74-1.4 2.54-2.88 5.22-2.88 5.58 0 6.6 3.68 6.6 8.46v9.17h-5.52v-8.13c0-1.95-.03-4.43-2.7-4.43-2.7 0-3.11 2.11-3.11 4.29v8.27h-5.48V8.98z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Sophia Martinez Twitter" title="Twitter">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M23 3a10.9 10.9 0 01-3.14.86 5.48 5.48 0 002.4-3.03 10.06 10.06 0 01-3.31 1.25 5.44 5.44 0 00-9.28 4.96 15.45 15.45 0 01-11.22-5.7 5.44 5.44 0 001.69 7.28A5.35 5.35 0 01.64 7.4v.07A5.44 5.44 0 005.45 12a5.44 5.44 0 01-2.45.1 5.44 5.44 0 005.08 3.79A10.9 10.9 0 012 18a15.45 15.45 0 008.41 2.42c10.1 0 15.63-8.36 15.63-15.62 0-.24 0-.47-.02-.7A11.18 11.18 0 0023 3z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Sophia Martinez Facebook" title="Facebook">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M22.675 0h-21.35C.579 0 0 .58 0 1.29v21.417c0 .71.578 1.293 1.29 1.293h11.486v-9.294H9.691v-3.622h3.085V8.413c0-3.058 1.866-4.726 4.59-4.726 1.308 0 2.43.097 2.757.142v3.19H17.72c-1.529 0-1.824.724-1.824 1.79v2.345h3.646l-.476 3.622h-3.17v9.294h6.216c.71 0 1.282-.578 1.282-1.293V1.29c0-.71-.572-1.29-1.284-1.29z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="author-card" tabindex="0">
+      <img src="https://dl.dropboxusercontent.com/scl/fi/v9o4wddgzyykzuh95n8s3/IMG_20250531_134456.jpg?rlkey=toathgvjw8908xbdu93eghcbd&st=gs1v6qtp&dl=0" alt="James Wilson" />
+      <h4>Vedant Sahu</h4>
+      <div class="social-icons">
+        <a href="#" aria-label="James Wilson LinkedIn" title="LinkedIn">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M4.98 3.5C3.41 3.5 2.12 4.78 2.12 6.35c0 1.55 1.27 2.82 2.86 2.82h.03c1.73 0 2.95-1.38 2.95-2.94 0-1.58-1.28-2.82-2.86-2.82zM.2 8.98h5.53v13.64H.2V8.98zM8.71 8.98h5.3v1.89h.08c.74-1.4 2.54-2.88 5.22-2.88 5.58 0 6.6 3.68 6.6 8.46v9.17h-5.52v-8.13c0-1.95-.03-4.43-2.7-4.43-2.7 0-3.11 2.11-3.11 4.29v8.27h-5.48V8.98z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="James Wilson Twitter" title="Twitter">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M23 3a10.9 10.9 0 01-3.14.86 5.48 5.48 0 002.4-3.03 10.06 10.06 0 01-3.31 1.25 5.44 5.44 0 00-9.28 4.96 15.45 15.45 0 01-11.22-5.7 5.44 5.44 0 001.69 7.28A5.35 5.35 0 01.64 7.4v.07A5.44 5.44 0 005.45 12a5.44 5.44 0 01-2.45.1 5.44 5.44 0 005.08 3.79A10.9 10.9 0 012 18a15.45 15.45 0 008.41 2.42c10.1 0 15.63-8.36 15.63-15.62 0-.24 0-.47-.02-.7A11.18 11.18 0 0023 3z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="James Wilson Facebook" title="Facebook">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M22.675 0h-21.35C.579 0 0 .58 0 1.29v21.417c0 .71.578 1.293 1.29 1.293h11.486v-9.294H9.691v-3.622h3.085V8.413c0-3.058 1.866-4.726 4.59-4.726 1.308 0 2.43.097 2.757.142v3.19H17.72c-1.529 0-1.824.724-1.824 1.79v2.345h3.646l-.476 3.622h-3.17v9.294h6.216c.71 0 1.282-.578 1.282-1.293V1.29c0-.71-.572-1.29-1.284-1.29z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <!-- <div class="author-card" tabindex="0">
+      <img src="https://randomuser.me/api/portraits/women/21.jpg" alt="Olivia Brown" />
+      <h4>Olivia Brown</h4>
+      <div class="social-icons">
+        <a href="#" aria-label="Olivia Brown LinkedIn" title="LinkedIn">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M4.98 3.5C3.41 3.5 2.12 4.78 2.12 6.35c0 1.55 1.27 2.82 2.86 2.82h.03c1.73 0 2.95-1.38 2.95-2.94 0-1.58-1.28-2.82-2.86-2.82zM.2 8.98h5.53v13.64H.2V8.98zM8.71 8.98h5.3v1.89h.08c.74-1.4 2.54-2.88 5.22-2.88 5.58 0 6.6 3.68 6.6 8.46v9.17h-5.52v-8.13c0-1.95-.03-4.43-2.7-4.43-2.7 0-3.11 2.11-3.11 4.29v8.27h-5.48V8.98z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Olivia Brown Twitter" title="Twitter">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M23 3a10.9 10.9 0 01-3.14.86 5.48 5.48 0 002.4-3.03 10.06 10.06 0 01-3.31 1.25 5.44 5.44 0 00-9.28 4.96 15.45 15.45 0 01-11.22-5.7 5.44 5.44 0 001.69 7.28A5.35 5.35 0 01.64 7.4v.07A5.44 5.44 0 005.45 12a5.44 5.44 0 01-2.45.1 5.44 5.44 0 005.08 3.79A10.9 10.9 0 012 18a15.45 15.45 0 008.41 2.42c10.1 0 15.63-8.36 15.63-15.62 0-.24 0-.47-.02-.7A11.18 11.18 0 0023 3z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Olivia Brown Facebook" title="Facebook">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M22.675 0h-21.35C.579 0 0 .58 0 1.29v21.417c0 .71.578 1.293 1.29 1.293h11.486v-9.294H9.691v-3.622h3.085V8.413c0-3.058 1.866-4.726 4.59-4.726 1.308 0 2.43.097 2.757.142v3.19H17.72c-1.529 0-1.824.724-1.824 1.79v2.345h3.646l-.476 3.622h-3.17v9.294h6.216c.71 0 1.282-.578 1.282-1.293V1.29c0-.71-.572-1.29-1.284-1.29z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="author-card" tabindex="0">
+      <img src="https://randomuser.me/api/portraits/men/34.jpg" alt="William Moore" />
+      <h4>William Moore</h4>
+      <div class="social-icons">
+        <a href="#" aria-label="William Moore LinkedIn" title="LinkedIn">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M4.98 3.5C3.41 3.5 2.12 4.78 2.12 6.35c0 1.55 1.27 2.82 2.86 2.82h.03c1.73 0 2.95-1.38 2.95-2.94 0-1.58-1.28-2.82-2.86-2.82zM.2 8.98h5.53v13.64H.2V8.98zM8.71 8.98h5.3v1.89h.08c.74-1.4 2.54-2.88 5.22-2.88 5.58 0 6.6 3.68 6.6 8.46v9.17h-5.52v-8.13c0-1.95-.03-4.43-2.7-4.43-2.7 0-3.11 2.11-3.11 4.29v8.27h-5.48V8.98z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="William Moore Twitter" title="Twitter">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M23 3a10.9 10.9 0 01-3.14.86 5.48 5.48 0 002.4-3.03 10.06 10.06 0 01-3.31 1.25 5.44 5.44 0 00-9.28 4.96 15.45 15.45 0 01-11.22-5.7 5.44 5.44 0 001.69 7.28A5.35 5.35 0 01.64 7.4v.07A5.44 5.44 0 005.45 12a5.44 5.44 0 01-2.45.1 5.44 5.44 0 005.08 3.79A10.9 10.9 0 012 18a15.45 15.45 0 008.41 2.42c10.1 0 15.63-8.36 15.63-15.62 0-.24 0-.47-.02-.7A11.18 11.18 0 0023 3z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="William Moore Facebook" title="Facebook">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M22.675 0h-21.35C.579 0 0 .58 0 1.29v21.417c0 .71.578 1.293 1.29 1.293h11.486v-9.294H9.691v-3.622h3.085V8.413c0-3.058 1.866-4.726 4.59-4.726 1.308 0 2.43.097 2.757.142v3.19H17.72c-1.529 0-1.824.724-1.824 1.79v2.345h3.646l-.476 3.622h-3.17v9.294h6.216c.71 0 1.282-.578 1.282-1.293V1.29c0-.71-.572-1.29-1.284-1.29z"/>
+          </svg> -->
+        </a>
+      </div>
+    </div>
+    <!-- <div class="author-card" tabindex="0">
+      <img src="https://randomuser.me/api/portraits/women/29.jpg" alt="Isabella Garcia" />
+      <h4>Isabella Garcia</h4>
+      <div class="social-icons">
+        <a href="#" aria-label="Isabella Garcia LinkedIn" title="LinkedIn">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M4.98 3.5C3.41 3.5 2.12 4.78 2.12 6.35c0 1.55 1.27 2.82 2.86 2.82h.03c1.73 0 2.95-1.38 2.95-2.94 0-1.58-1.28-2.82-2.86-2.82zM.2 8.98h5.53v13.64H.2V8.98zM8.71 8.98h5.3v1.89h.08c.74-1.4 2.54-2.88 5.22-2.88 5.58 0 6.6 3.68 6.6 8.46v9.17h-5.52v-8.13c0-1.95-.03-4.43-2.7-4.43-2.7 0-3.11 2.11-3.11 4.29v8.27h-5.48V8.98z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Isabella Garcia Twitter" title="Twitter">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M23 3a10.9 10.9 0 01-3.14.86 5.48 5.48 0 002.4-3.03 10.06 10.06 0 01-3.31 1.25 5.44 5.44 0 00-9.28 4.96 15.45 15.45 0 01-11.22-5.7 5.44 5.44 0 001.69 7.28A5.35 5.35 0 01.64 7.4v.07A5.44 5.44 0 005.45 12a5.44 5.44 0 01-2.45.1 5.44 5.44 0 005.08 3.79A10.9 10.9 0 012 18a15.45 15.45 0 008.41 2.42c10.1 0 15.63-8.36 15.63-15.62 0-.24 0-.47-.02-.7A11.18 11.18 0 0023 3z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Isabella Garcia Facebook" title="Facebook">
+          <svg role="img" viewBox="0 0 24 24" fill="currentColor" >
+            <path d="M22.675 0h-21.35C.579 0 0 .58 0 1.29v21.417c0 .71.578 1.293 1.29 1.293h11.486v-9.294H9.691v-3.622h3.085V8.413c0-3.058 1.866-4.726 4.59-4.726 1.308 0 2.43.097 2.757.142v3.19H17.72c-1.529 0-1.824.724-1.824 1.79v2.345h3.646l-.476 3.622h-3.17v9.294h6.216c.71 0 1.282-.578 1.282-1.293V1.29c0-.71-.572-1.29-1.284-1.29z"/>
+          </svg>
+        </a>
+      </div>
+    </div> -->
+  </div>
+</section>
+
+  <section class="call-to-action" aria-label="Join our team call to action">
+    <h2>Join our team to be a part of our story</h2>
+    <button class="join-now-btn" aria-label="Join Now Button">Join Now</button>
+  </section>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-left">
+    <div class="logo" aria-label="Finsweet Logo">Finsweet</div>
+    <p>Subscribe to our newsletter to get latest updates and news</p>
+  </div>
+  <div class="footer-right">
+    <input type="email" placeholder="Your email" aria-label="Email input for newsletter subscription" />
+    <button class="subscribe-btn" aria-label="Subscribe to newsletter">Subscribe</button>
+  </div>
+  <nav class="footer-nav" aria-label="Footer navigation">
+    <a href="index.html">Home</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </nav>
+</footer>
+
+</body>
+</html>
+
