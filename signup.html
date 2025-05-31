@@ -6,6 +6,33 @@
   <title>Sign Up - Finsweet</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css">
+  <style> button.home {
+      margin-left: 1.5rem;
+      background-color: var(--yellow);
+      color: var(--black);
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 6px;
+      padding: 10px 20px;
+      border: none;
+      box-shadow: 0 6px 16px rgb(255 214 0 / 0.5);
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+    }
+    button.home:hover {
+      background-color: #ffec3d;
+      box-shadow: 0 8px 25px rgb(255 214 0 / 0.7);
+    }
+    
+.last {
+  position: fixed;
+  bottom: 20px; /* space from the bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000; /* keep it above other elements */
+}
+
+</style>
 </head>
 <body>
   <div class="signup-container" role="main" aria-label="Sign up form">
@@ -25,6 +52,9 @@
       Already have an account?
       <a href="login.html" aria-label="Go to login page">Login</a>
     </div>
+  </div>
+  <div class="last">
+    <button class="home"><a href="index.html" >Go To Home</a></button>
   </div>
 </body>
 </html>
