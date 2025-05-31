@@ -1,1 +1,314 @@
 We are BitKnights
+
+1. Introduction
+Welcome to BitKnight (“we,” “our,” “us”). We are committed to protecting your personal data and your right to privacy. This Privacy Policy explains how we collect, use, store, and disclose your personal information when you interact with our website, apps, products, and services (collectively, the “Services”).
+
+Please read this Privacy Policy carefully to understand what we do with the information we collect. By using our Services, you acknowledge that you have read and understood this policy.
+
+2. Who We Are
+BitKnight is a team of developers, designers, and innovators providing software products and digital services aimed at [insert description of your services – e.g., productivity, education, campus safety, etc.].
+
+Our goal is to deliver secure, intuitive, and efficient applications while ensuring that user data is handled with transparency and care.
+
+3. Scope of This Privacy Policy
+This Privacy Policy applies to all information collected through our:
+
+Websites
+
+Mobile applications
+
+Web applications
+
+API integrations
+
+Social media pages
+
+Email communications
+
+Offline interactions
+
+Any other services linked to this policy
+
+This policy does not apply to third-party websites or services that may be linked from our services.
+
+4. Information We Collect
+We collect different types of information depending on how you interact with us:
+
+4.1 Personal Information
+Personal information refers to any information that can be used to identify an individual. We may collect:
+
+Name
+
+Email address
+
+Phone number
+
+Username
+
+Password
+
+Date of birth
+
+Gender
+
+Location
+
+Student or organizational ID (if applicable)
+
+Photos or profile pictures
+
+Feedback, reviews, and communication
+
+4.2 Device and Usage Information
+We may automatically collect certain information when you use our Services, such as:
+
+Device type
+
+Operating system
+
+Browser type
+
+IP address
+
+Device ID
+
+Pages visited
+
+Time spent on pages
+
+Clicks and interactions
+
+Crash logs and diagnostics
+
+4.3 Location Data
+If you enable location-based features, we may collect precise or approximate location data using GPS, IP address, Wi-Fi, or cell tower information.
+
+4.4 Cookies and Tracking Technologies
+We use cookies and similar tracking technologies to collect data about your interaction with our Services. This may include:
+
+Session cookies
+
+Persistent cookies
+
+Pixel tags
+
+Beacons
+
+Local storage
+
+5. How We Use Your Information
+We use the information we collect for a variety of legitimate business purposes, including:
+
+5.1 To Provide and Improve Our Services
+Creating and managing user accounts
+
+Delivering requested features and services
+
+Enhancing user experience
+
+Conducting research and development
+
+5.2 To Communicate with You
+Responding to your inquiries
+
+Sending administrative emails and service notifications
+
+Providing updates, announcements, and newsletters (if opted-in)
+
+5.3 For Personalization
+Customizing content and recommendations
+
+Remembering user preferences and settings
+
+5.4 For Security and Legal Purposes
+Monitoring for fraudulent or illegal activity
+
+Enforcing terms and policies
+
+Complying with legal obligations
+
+Investigating and resolving disputes
+
+5.5 Marketing and Promotions
+Sending promotional emails (with consent)
+
+Displaying personalized ads and content
+
+Measuring campaign effectiveness
+
+6. Legal Bases for Processing
+If you are located in the European Economic Area (EEA), we rely on the following legal bases:
+
+Your consent
+
+Performance of a contract
+
+Legal obligations
+
+Legitimate interests
+
+Vital interests
+
+Public interest
+
+7. Sharing Your Information
+We do not sell your personal information. However, we may share your data with:
+
+7.1 Service Providers
+We work with third-party vendors to help operate our services, such as:
+
+Cloud hosting (e.g., AWS, Firebase)
+
+Email delivery (e.g., SendGrid, Mailchimp)
+
+Analytics tools (e.g., Google Analytics)
+
+Payment processors (e.g., Stripe, Razorpay)
+
+7.2 Business Transfers
+If BitKnight is involved in a merger, acquisition, or sale of assets, user data may be transferred as part of that transaction.
+
+7.3 Legal Compliance
+We may disclose your information if required to do so by law or in good faith to:
+
+Comply with legal obligations
+
+Respond to legal claims or court orders
+
+Prevent fraud or abuse
+
+Protect rights, property, and safety
+
+8. Data Retention
+We retain your personal information for as long as necessary to:
+
+Provide our services
+
+Comply with legal obligations
+
+Resolve disputes
+
+Enforce agreements
+
+Once data is no longer needed, we securely delete or anonymize it.
+
+9. Data Security
+We implement appropriate technical and organizational measures to protect your data:
+
+Encrypted storage and transmission (e.g., HTTPS, TLS)
+
+Secure authentication systems
+
+Access controls
+
+Regular security audits and vulnerability assessments
+
+Despite our efforts, no method of transmission over the Internet is 100% secure. Use our services at your own risk.
+
+10. Your Rights and Choices
+Depending on your jurisdiction, you may have the following rights:
+
+Access: Request a copy of your data
+
+Correction: Update inaccurate or incomplete information
+
+Deletion: Request deletion of your data
+
+Objection: Object to data processing
+
+Restriction: Request restriction of processing
+
+Portability: Receive data in a portable format
+
+Withdraw Consent: Revoke previously given consent
+
+To exercise these rights, contact us at [insert contact email].
+
+11. Children’s Privacy
+Our Services are not intended for children under the age of 13 (or 16 where applicable). We do not knowingly collect personal data from children. If we discover that a child has submitted personal data, we will take steps to delete it.
+
+12. Third-Party Links and Services
+Our Services may contain links to third-party websites or services. We are not responsible for the content, privacy practices, or policies of those third parties. We recommend reviewing their privacy policies separately.
+
+13. International Data Transfers
+We may transfer your information to countries outside your jurisdiction. If you are located in the EEA, UK, or other regions with laws governing data collection, we ensure adequate protection is provided via:
+
+Standard Contractual Clauses (SCCs)
+
+Data transfer agreements
+
+Applicable certifications and compliance frameworks
+
+14. Your Preferences and Account Settings
+You can manage your privacy settings in your account dashboard. Options may include:
+
+Email subscription preferences
+
+Profile visibility
+
+Notification settings
+
+Account deletion
+
+15. Use of Cookies and Similar Technologies
+You can manage cookie preferences via your browser settings or a cookie banner (where applicable). We categorize cookies as:
+
+Essential cookies – Required for service functionality
+
+Performance cookies – Measure site performance
+
+Functional cookies – Remember preferences
+
+Advertising cookies – Deliver targeted ads
+
+For more details, see our [Cookie Policy] (if available).
+
+16. Data Breach Notification
+In the event of a data breach, we will notify affected users and regulators as required by law. Notifications will include:
+
+Nature of the breach
+
+Types of information involved
+
+Steps taken to mitigate the breach
+
+Recommendations for affected individuals
+
+17. Changes to This Privacy Policy
+We may update this Privacy Policy from time to time. We will notify you via email, in-app message, or website notice if changes are significant. Continued use of our Services after changes means you accept the updated policy.
+
+18. Contact Us
+If you have questions about this Privacy Policy or your data, contact us:
+
+Team BitKnight
+Email: [Insert Email Address]
+Website: [Insert Website URL]
+Address: [Insert Physical Address, if any]
+
+19. Additional Notices
+19.1 California Residents (CCPA)
+If you are a California resident, you have the right to:
+
+Know what personal data we collect and why
+
+Access your personal data
+
+Request deletion of personal data
+
+Opt out of sale of personal information (we do not sell data)
+
+To exercise your rights, email us at [Insert Email].
+
+19.2 European Union (GDPR)
+If you are in the EU, you may lodge a complaint with your local data protection authority.
+
+20. Glossary
+Personal Data: Any information relating to an identified or identifiable individual.
+
+Processing: Any operation performed on personal data (e.g., collecting, storing, deleting).
+
+Data Controller: The entity that determines the purposes and means of processing personal data.
+
+Data Processor: The entity that processes personal data on behalf of the controller.
+
+Cookies: Small data files stored on your device by a website.
